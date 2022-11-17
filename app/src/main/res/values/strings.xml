@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">CycloFit</string>
+
+    <string name="err_msg_first_name">Please enter your full name. </string>
+    <string name="err_msg_email">Please enter your email. </string>
+    <string name="err_msg_password">Please enter password. </string>
+    <string name="err_msg_checkbox_confirm">Please accept terms and conditions.</string>
+    <string name="err_msg_agree">Please agree terms and condition</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

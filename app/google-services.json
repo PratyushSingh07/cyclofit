@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "676472405532",
+    "project_id": "cyclofit-ee7cf",
+    "storage_bucket": "cyclofit-ee7cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676472405532:android:ae0a0c0b96233d4172a9d9",
+        "android_client_info": {
+          "package_name": "com.example.cyclofit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676472405532-5pkd6ickt4f4jhccsuiip6v4iu0f9apt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cyclofit",
+            "certificate_hash": "e7aaac6baf92d83284f5b159ead90daa707e207e"
+          }
+        },
+        {
+          "client_id": "676472405532-6mh465p0amemh4ge9meauukuol9h78c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4slTeeJtuPzUZkCp4n2vFLyFA9C5IUgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676472405532-6mh465p0amemh4ge9meauukuol9h78c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

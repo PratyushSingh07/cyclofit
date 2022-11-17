@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.SignInFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
+                android:layout_marginTop="40sp"
+                />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15sp"
+                android:text="Sign In"
+                android:textAlignment="center"
+                android:textColor="@color/dark_green"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="7sp"
+                android:textColor="@color/dark_green"
+                app:startIconDrawable="@drawable/ic_baseline_alternate_email_24"
+                android:textColorHint="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/dark_green"
+                app:startIconTint="@color/dark_green"
+
+                app:hintTextColor="@color/dark_green">
+
+                <EditText
+                    android:id="@+id/et_email_signTn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="20sp"
+                    android:imeOptions="actionGo"
+                    android:cursorVisible="true"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="7sp"
+                android:textColor="@color/dark_green"
+                android:textColorHint="@color/dark_green"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green"
+                app:startIconTint="@color/dark_green"
+
+                app:hintTextColor="@color/dark_green">
+
+                <EditText
+                    android:id="@+id/et_password_signIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="20sp"
+                    android:imeOptions="actionGo"
+                    android:cursorVisible="true"
+                    android:inputType="textWebPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:layout_marginTop="16dp"
+                    android:text="Forget your Password?"
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_forget_password"
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp"
+                    android:text="Recover it"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/dark_green"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_signIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/dark_green"
+                android:textSize="20sp"
+                android:paddingLeft="30sp"
+                android:paddingRight="30sp"
+                android:paddingTop="12sp"
+                android:paddingBottom="12sp"
+                android:layout_marginTop="20sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:layout_marginTop="16dp"
+                    android:text="Don't have an account? "
+                    android:textColor="@color/black"
+                    android:textAlignment="textEnd"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_signUp"
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp"
+                    android:text="Sign Up"
+                    android:paddingLeft="10sp"
+                    android:textColor="@color/dark_green"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+</FrameLayout>

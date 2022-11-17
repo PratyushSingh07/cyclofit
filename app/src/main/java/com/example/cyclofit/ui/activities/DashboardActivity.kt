@@ -1,10 +1,14 @@
-package com.example.cyclofit
+package com.example.cyclofit.ui.activities
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.cyclofit.*
+import com.example.cyclofit.ui.fragment.CommunityFragment
+import com.example.cyclofit.ui.fragment.HealthFragment
+import com.example.cyclofit.ui.fragment.HomeFragment
+import com.example.cyclofit.ui.fragment.LeaderboardFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class DashboardActivity:AppCompatActivity() {
@@ -14,10 +18,10 @@ class DashboardActivity:AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         supportActionBar?.hide()
 
-        val homeFragment=HomeFragment()
-        val healthFragment=HealthFragment()
-        val communityFragment=CommunityFragment()
-        val leaderboardFragment=LeaderboardFragment()
+        val homeFragment= HomeFragment()
+        val healthFragment= HealthFragment()
+        val communityFragment= CommunityFragment()
+        val leaderboardFragment= LeaderboardFragment()
 
         setCurrentFragment(homeFragment)
 
