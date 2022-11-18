@@ -19,9 +19,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".ui.activities.SplashScreen" />
+        <activity android:name=".ui.activities.DashboardActivity" />
         <activity
-            android:name=".ui.activities.DashboardActivity"
+            android:name=".ui.activities.SplashScreen"
             android:exported="true" >
 
             <intent-filter>
