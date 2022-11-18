@@ -57,10 +57,12 @@ class SignUpFragment : BaseFragment() {
 
                         val user = User(
                             id = firebaseUser.uid,
-                            name = binding.etEmailSignup.text.toString().trim{ it<=' ' },
-                            email = binding.etPasswordSignup.text.toString().trim{ it <= ' '},
+                            name = binding.etNameSignup.text.toString().trim{ it<=' ' },
+                            email = binding.etEmailSignup.text.toString().trim{ it <= ' '},
                         )
+                        FirestoreClass().registerUserRealTime(this,user)
                         FirestoreClass().registerUser(this, user)
+
 
 //                        FirebaseAuth.getInstance().signOut()
 //                        finish()

@@ -3,7 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.HealthFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:background="@drawable/img_1"
+            >
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_community_member"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8sp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/user_community_member_list"
+            android:layout_margin="4sp"
+            />
+    </LinearLayout>
+
+
 
 
 </FrameLayout>

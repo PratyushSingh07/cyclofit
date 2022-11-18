@@ -13,6 +13,8 @@ class HealthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
+
         return inflater.inflate(R.layout.fragment_health, container, false)
     }
 }

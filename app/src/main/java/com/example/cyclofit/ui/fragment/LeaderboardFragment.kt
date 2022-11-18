@@ -14,6 +14,8 @@ class LeaderboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
+
         return inflater.inflate(R.layout.fragment_leaderboard, container, false)
     }
 }

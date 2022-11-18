@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.4.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
@@ -64,4 +65,10 @@ dependencies {
 
     //Bar Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //firebaseRealtime
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+
+    //circular image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

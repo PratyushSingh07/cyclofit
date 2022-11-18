@@ -1,15 +1,18 @@
 package com.example.cyclofit.ui.firestore
 
-import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cyclofit.ui.User
+import com.example.cyclofit.ui.fragment.CommunityFragment
 import com.example.cyclofit.ui.fragment.SignInFragment
 import com.example.cyclofit.ui.fragment.SignUpFragment
 import com.example.cyclofit.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
@@ -88,4 +91,67 @@ class FirestoreClass {
                 }
             }
     }
+
+    fun registerUserRealTime(fragment: SignUpFragment,userInfo: User){
+
+        FirebaseDatabase.getInstance().getReference(Constants.USERS)
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+            .setValue(userInfo)
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener {e->
+                fragment.hideProgressDialog()
+                Log.e(
+                    "Maa Baap ka pyaar check",
+                    "Error while registering the user_id.",
+                    e
+                )
+            }
+    }
+
+    fun getUserDetailsRealtime(fragment: CommunityFragment){
+
+        val list = arrayListOf<User>()
+
+        FirebaseDatabase.getInstance().getReference(Constants.USERS)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.exists()){
+
+                        for(data in snapshot.children){
+                            val model = data.getValue(User::class.java)
+                            if(model!!.id != FirebaseAuth.getInstance().uid){
+                                list.add(model)
+                            }
+                        }
+                        list.shuffle()
+                    }
+                    else{
+                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+                    }
+                    fragment.userDetailsSuccess(list)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+    }
+
+
+//    .get()
+//    .addOnSuccessListener { document->
+//        val userList : ArrayList<User> =ArrayList()
+//
+//
+//    }
+//    .addOnFailureListener { e->
+//        fragment.hideProgressDialog()
+//        Log.e(
+//            "Maa Baap ka pyaar check1",
+//            "Error while getting the user_id.",
+//            e
+//        )
+//    }
 }
