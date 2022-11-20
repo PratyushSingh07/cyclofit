@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.R
@@ -32,6 +33,12 @@ class CommunityFragment : BaseFragment() {
         val nameList= listOf<String>("ab","fe","efw","fhd","jr","3r","3r","ab","ab","ab","ab","ab","ab","ab","ab","ab","ab","ab")
         binding.rvCommunityName.adapter=CommunityListAdapter(nameList)
         binding.rvCommunityName.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
+        binding.fab.setOnClickListener{
+            val postFragment=PostFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_activity_dashboard,postFragment)
+                .commit()
+        }
         return binding.root
     }
 
