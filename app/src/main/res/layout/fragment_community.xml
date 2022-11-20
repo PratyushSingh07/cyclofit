@@ -6,28 +6,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.HealthFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <LinearLayout
+            android:id="@+id/llHealthImg"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="200sp"
             android:background="@drawable/img_1"
-            >
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
         </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:backgroundTint="#40E0D0"
+            android:src="@drawable/ic_baseline_add_24"
+            app:tint = "@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_community_member"
+            app:layout_constraintTop_toBottomOf="@+id/llHealthImg"
             android:layout_width="match_parent"
             android:layout_marginTop="8sp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="wrap_content"
+            android:layout_height="529sp"
             tools:listitem="@layout/user_community_member_list"
             android:layout_margin="4sp"
             />
-    </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
