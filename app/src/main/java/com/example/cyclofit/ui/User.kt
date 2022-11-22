@@ -8,5 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class User(
     val id : String = " ",
     val name : String = " ",
-    val email : String = " "
+    val email : String = " ",
+    val distance: String=" "
 ):Parcelable

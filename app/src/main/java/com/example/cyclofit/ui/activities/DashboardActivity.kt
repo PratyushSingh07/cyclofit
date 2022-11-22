@@ -57,7 +57,7 @@ class DashboardActivity:AppCompatActivity() {
 
     override fun onBackPressed() {
         if(mCount==0)
-        goHomeFragment()
+            goHomeFragment()
         else
         super.onBackPressed()
         mCount++
