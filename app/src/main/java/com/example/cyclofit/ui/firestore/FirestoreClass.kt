@@ -109,34 +109,34 @@ class FirestoreClass {
             }
     }
 
-    fun getUserDetailsRealtime(fragment: CommunityFragment){
-
-        val list = arrayListOf<User>()
-
-        FirebaseDatabase.getInstance().getReference(Constants.USERS)
-            .addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
-
-                        for(data in snapshot.children){
-                            val model = data.getValue(User::class.java)
-                            if(model!!.id != FirebaseAuth.getInstance().uid){
-                                list.add(model)
-                            }
-                        }
-                        list.shuffle()
-                    }
-                    else{
-                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
-                    }
-                    fragment.userDetailsSuccess(list)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
-
-    }
+//    fun getUserDetailsRealtime(fragment: CommunityFragment){
+//
+//        val list = arrayListOf<User>()
+//
+//        FirebaseDatabase.getInstance().getReference(Constants.USERS)
+//            .addValueEventListener(object : ValueEventListener{
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    if(snapshot.exists()){
+//
+//                        for(data in snapshot.children){
+//                            val model = data.getValue(User::class.java)
+//                            if(model!!.id != FirebaseAuth.getInstance().uid){
+//                                list.add(model)
+//                            }
+//                        }
+//                        list.shuffle()
+//                    }
+//                    else{
+//                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+//                    }
+////                    fragment.getAllpostSuccess(list)
+//                }
+//                override fun onCancelled(error: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
+//            })
+//
+//    }
 
     fun createCommunity(fragment: CreateCommunityFragment, community : String){
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
@@ -170,6 +170,62 @@ class FirestoreClass {
                     e
                 )
             }
+    }
+
+    fun getCommunityList(fragment: CommunityFragment){
+
+        val list = ArrayList<String>()
+
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.exists()){
+
+                        for (data in snapshot.children) {
+                            val key = data.key
+                            list.add(key.toString())
+                        }
+                        list.shuffle()
+                    }
+                    else{
+                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+                    }
+                    fragment.getCommunityListSuccess(list)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+    }
+
+    fun getAllPost(fragment: CommunityFragment){
+
+        val list = ArrayList<Post>()
+
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child("abcd")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.exists()){
+
+                        for (data in snapshot.children) {
+                            val value = data.getValue(Post::class.java)
+                            list.add(value!!)
+                            Log.e("fuck", value.toString())
+                        }
+
+                        list.shuffle()
+                    }
+                    else{
+                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+                    }
+                    fragment.getAllPostSuccess(list)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
     }
 
 }

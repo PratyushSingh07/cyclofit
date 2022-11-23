@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentCommunityBinding
-import com.example.cyclofit.model.User
+import com.example.cyclofit.model.Post
 import com.example.cyclofit.ui.adapter.CommunityListAdapter
-import com.example.cyclofit.ui.adapter.MessageUserAdapter
+import com.example.cyclofit.ui.adapter.AllPostAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
 
 
@@ -32,10 +32,10 @@ class CommunityFragment : BaseFragment() {
                 .commit()
         }
 
-        getUserMessageList()
-        val nameList= listOf<String>("ab","fe","efw","fhd","jr","3r","3r","ab","ab","ab","ab","ab","ab","ab","ab","ab","ab","ab")
-        binding.rvCommunityName.adapter=CommunityListAdapter(nameList)
-        binding.rvCommunityName.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
+        getAllPost()
+
+        getCommunityList()
+
         binding.fab.setOnClickListener{
             val postFragment=PostFragment()
             requireActivity().supportFragmentManager.beginTransaction()
@@ -45,15 +45,27 @@ class CommunityFragment : BaseFragment() {
         return binding.root
     }
 
-    private fun getUserMessageList() {
+    private fun getAllPost() {
         showProgressDialog()
-        FirestoreClass().getUserDetailsRealtime(this)
+        FirestoreClass().getAllPost(this)
     }
 
-    fun userDetailsSuccess(list: ArrayList<User>) {
+    fun getAllPostSuccess(list: ArrayList<Post>) {
 
         hideProgressDialog()
 
-        binding.rvCommunityMember.adapter = MessageUserAdapter(requireContext(),list)
+        binding.rvCommunityMember.adapter = AllPostAdapter(requireContext(),list)
+    }
+
+    private fun getCommunityList(){
+
+        FirestoreClass().getCommunityList(this)
+    }
+
+    fun getCommunityListSuccess(list: ArrayList<String>){
+
+        binding.rvCommunityName.adapter = CommunityListAdapter(list)
+        binding.rvCommunityName.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
+
     }
 }

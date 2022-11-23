@@ -5,24 +5,32 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.databinding.UserCommunityMemberListBinding
+import com.example.cyclofit.model.Post
 import com.example.cyclofit.model.User
 
-class MessageUserAdapter(
-    val context: Context, private val list: ArrayList<User>
-) : RecyclerView.Adapter<MessageUserAdapter.MessageUserViewHolder>() {
+class AllPostAdapter(
+    val context: Context,
+    private val list: ArrayList<Post>
+) : RecyclerView.Adapter<AllPostAdapter.MessageUserViewHolder>() {
 
 
     inner class MessageUserViewHolder(val binding: UserCommunityMemberListBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageUserViewHolder {
-        return MessageUserViewHolder(UserCommunityMemberListBinding.inflate(LayoutInflater.from(context),parent,false))
+        return MessageUserViewHolder(
+            UserCommunityMemberListBinding.inflate(
+                LayoutInflater.from(
+                    context
+                ), parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: MessageUserViewHolder, position: Int) {
         val model = list[position]
 
-        holder.binding.tvPostUser.text = model.name
+        holder.binding.tvPostText.text = model.details
     }
 
     override fun getItemCount(): Int {

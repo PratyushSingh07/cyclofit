@@ -6,8 +6,9 @@
     android:layout_marginTop="60dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:id="@+id/ll_community"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
         <ImageView
             android:id="@+id/communityPic"
