@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.databinding.UserCommunityMemberListBinding
-import com.example.cyclofit.ui.User
+import com.example.cyclofit.model.User
 
 class MessageUserAdapter(
     val context: Context, private val list: ArrayList<User>
@@ -22,7 +22,7 @@ class MessageUserAdapter(
     override fun onBindViewHolder(holder: MessageUserViewHolder, position: Int) {
         val model = list[position]
 
-        holder.binding.tvCommunityMemberName.text = model.name
+        holder.binding.tvPostUser.text = model.name
     }
 
     override fun getItemCount(): Int {

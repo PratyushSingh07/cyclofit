@@ -14,12 +14,17 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cyclofit.databinding.FragmentPostBinding
+import com.example.cyclofit.model.Post
+import com.example.cyclofit.ui.firestore.FirestoreClass
+import com.google.firebase.database.FirebaseDatabase
 
 
-class PostFragment : Fragment() {
+class PostFragment : BaseFragment() {
 
     lateinit var binding: FragmentPostBinding
     private val RESULT_LOAD_IMAGE = 1
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +35,19 @@ class PostFragment : Fragment() {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(i, RESULT_LOAD_IMAGE)
         }
+
+        binding.btnPost.setOnClickListener {
+            showProgressDialog()
+
+            val postList = ArrayList<Post>()
+
+            val posts = Post(
+                details = binding.postDescription.text.toString()
+            )
+            postList.add(posts)
+            FirestoreClass().createPost(this,"abcd",postList)
+        }
+
         return binding.root
     }
       override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -45,6 +63,11 @@ class PostFragment : Fragment() {
             cursor?.close()
             binding.postImage.setImageBitmap(BitmapFactory.decodeFile(picturePath))
         }
+    }
+
+    fun createPostSuccess(){
+        hideProgressDialog()
+        requireActivity().onBackPressed()
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.cyclofit.ui
+package com.example.cyclofit.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

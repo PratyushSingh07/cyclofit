@@ -3,10 +3,9 @@ package com.example.cyclofit.ui.firestore
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.cyclofit.ui.User
-import com.example.cyclofit.ui.fragment.CommunityFragment
-import com.example.cyclofit.ui.fragment.SignInFragment
-import com.example.cyclofit.ui.fragment.SignUpFragment
+import com.example.cyclofit.model.Post
+import com.example.cyclofit.model.User
+import com.example.cyclofit.ui.fragment.*
 import com.example.cyclofit.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -139,19 +138,38 @@ class FirestoreClass {
 
     }
 
+    fun createCommunity(fragment: CreateCommunityFragment, community : String){
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
+            .child(community)
+            .setValue(community)
+            .addOnSuccessListener {
+                fragment.createCommunitySuccess()
+            }
+            .addOnFailureListener { e->
+                fragment.hideProgressDialog()
+                Log.e(
+                    "Maa Baap ka pyaar check",
+                    "Error while registering the user_id.",
+                    e
+                )
+            }
+    }
 
-//    .get()
-//    .addOnSuccessListener { document->
-//        val userList : ArrayList<User> =ArrayList()
-//
-//
-//    }
-//    .addOnFailureListener { e->
-//        fragment.hideProgressDialog()
-//        Log.e(
-//            "Maa Baap ka pyaar check1",
-//            "Error while getting the user_id.",
-//            e
-//        )
-//    }
+    fun createPost(fragment: PostFragment,community: String,postList : ArrayList<Post>){
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
+            .child(community)
+            .setValue(postList)
+            .addOnSuccessListener {
+                fragment.createPostSuccess()
+            }
+            .addOnFailureListener { e->
+                fragment.hideProgressDialog()
+                Log.e(
+                    "Maa Baap ka pyaar check",
+                    "Error while registering the user_id.",
+                    e
+                )
+            }
+    }
+
 }

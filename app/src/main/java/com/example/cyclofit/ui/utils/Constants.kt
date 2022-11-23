@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap
 object Constants{
 
     const val USERS = "users"
+    const val COMMUNITY = "community"
     const val LOGGED_IN_USERNAME = "name"
     const val CYCLOFIT_PREFERENCES : String = "cycloFit"
     const val ONBOARDING_FLAG : String = "no"

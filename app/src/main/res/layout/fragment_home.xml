@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:orientation="vertical"
-            android:background="@drawable/img_1" />
+            android:background="@drawable/background_img" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,14 +32,15 @@
 
         <ImageView
             android:id="@+id/userImage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="15sp"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/img_2" />
+            android:src="@drawable/profile_icon" />
 
         <LinearLayout
             android:layout_width="match_parent"

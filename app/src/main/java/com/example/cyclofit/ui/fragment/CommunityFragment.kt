@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentCommunityBinding
-import com.example.cyclofit.ui.User
+import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.adapter.CommunityListAdapter
 import com.example.cyclofit.ui.adapter.MessageUserAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
-import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.android.synthetic.main.fragment_community.*
 
 
 class CommunityFragment : BaseFragment() {
@@ -28,6 +24,13 @@ class CommunityFragment : BaseFragment() {
         binding = FragmentCommunityBinding.inflate(inflater,container,false)
 
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
+
+        binding.fabNewCommunity.setOnClickListener {
+            val createFragment = CreateCommunityFragment()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_activity_dashboard,createFragment)
+                .commit()
+        }
 
         getUserMessageList()
         val nameList= listOf<String>("ab","fe","efw","fhd","jr","3r","3r","ab","ab","ab","ab","ab","ab","ab","ab","ab","ab","ab")

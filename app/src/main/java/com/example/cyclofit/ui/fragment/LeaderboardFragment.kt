@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentLeaderboardBinding
-import com.example.cyclofit.databinding.FragmentPostBinding
-import com.example.cyclofit.ui.User
+import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.adapter.LeaderboardAdapter
 
 class LeaderboardFragment : Fragment() {
