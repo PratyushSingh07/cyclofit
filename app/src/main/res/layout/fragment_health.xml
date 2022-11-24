@@ -102,6 +102,7 @@
                     app:cardElevation="15dp"
                     android:backgroundTint="@color/dark_green">
                     <LinearLayout
+                        android:id="@+id/cvOfHeartRate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"

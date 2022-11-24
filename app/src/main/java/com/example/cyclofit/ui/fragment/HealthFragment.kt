@@ -1,5 +1,6 @@
 package com.example.cyclofit.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.cyclofit.`interface`.HeartApi
 import com.example.cyclofit.databinding.FragmentHealthBinding
+import com.example.cyclofit.ui.activities.GraphActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,11 +18,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class HealthFragment : BaseFragment() {
+ class HealthFragment : BaseFragment() {
 
     lateinit var binding: FragmentHealthBinding
     private lateinit var mApiService: HeartApi
 
+     companion object{
+         var Datalist=ArrayList<String>()
+     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +34,9 @@ class HealthFragment : BaseFragment() {
 
         showProgressDialog()
         fetchHeartRate()
-
+        binding.cvOfHeartRate.setOnClickListener{
+            startActivity(Intent(context,GraphActivity::class.java))
+        }
         return binding.root
     }
 
@@ -51,7 +58,8 @@ class HealthFragment : BaseFragment() {
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            val list = ArrayList<String>()
+             val list = ArrayList<String>()
+//            val list = ArrayList<String>()
             val averageHeart : String
             var total = 0
 
@@ -64,6 +72,8 @@ class HealthFragment : BaseFragment() {
             averageHeart = (total/response.feeds.size).toString()
             setText(averageHeart)
             println(averageHeart)
+//            for(i in list) println("Hiiiii $i") ->this is working fine
+            Datalist=list
         }
     }
 
