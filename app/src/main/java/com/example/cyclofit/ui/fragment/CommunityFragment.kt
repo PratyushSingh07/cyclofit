@@ -22,6 +22,8 @@ class CommunityFragment : BaseFragment() {
     ): View {
         binding = FragmentCommunityBinding.inflate(inflater,container,false)
 
+        setHasOptionsMenu(true)
+
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
         binding.fabNewCommunity.setOnClickListener {
@@ -41,7 +43,6 @@ class CommunityFragment : BaseFragment() {
                 .replace(R.id.nav_host_fragment_activity_dashboard,postFragment)
                 .commit()
         }
-        binding.toolbarDashboard.inflateMenu(R.menu.commuity_top)
         return binding.root
     }
 
@@ -78,5 +79,14 @@ class CommunityFragment : BaseFragment() {
         binding.rvCommunityName.adapter = CommunityListAdapter(list)
         binding.rvCommunityName.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
 
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        binding.toolbarDashboard.inflateMenu(R.menu.commuity_top)
+        binding.toolbarDashboard.setOnMenuItemClickListener { menuItem ->
+            onOptionsItemSelected(menuItem)
+        }
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
