@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cyclofit.model.Post
 import com.example.cyclofit.model.User
+import com.example.cyclofit.ui.activities.CreateCommunityActivity
+import com.example.cyclofit.ui.activities.PostActivity
 import com.example.cyclofit.ui.fragment.*
 import com.example.cyclofit.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -138,15 +140,15 @@ class FirestoreClass {
 //
 //    }
 
-    fun createCommunity(fragment: CreateCommunityFragment, community : String){
+    fun createCommunity(activity: CreateCommunityActivity, community : String){
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
             .child(community)
             .setValue(community)
             .addOnSuccessListener {
-                fragment.createCommunitySuccess()
+                activity.createCommunitySuccess()
             }
             .addOnFailureListener { e->
-                fragment.hideProgressDialog()
+                activity.hideProgressDialog()
                 Log.e(
                     "Maa Baap ka pyaar check",
                     "Error while registering the user_id.",
@@ -155,15 +157,15 @@ class FirestoreClass {
             }
     }
 
-    fun createPost(fragment: PostFragment,community: String,postList : ArrayList<Post>){
+    fun createPost(activity: PostActivity,community: String,postList : ArrayList<Post>){
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
             .child(community)
             .setValue(postList)
             .addOnSuccessListener {
-                fragment.createPostSuccess()
+                activity.createPostSuccess()
             }
             .addOnFailureListener { e->
-                fragment.hideProgressDialog()
+                activity.hideProgressDialog()
                 Log.e(
                     "Maa Baap ka pyaar check",
                     "Error while registering the user_id.",

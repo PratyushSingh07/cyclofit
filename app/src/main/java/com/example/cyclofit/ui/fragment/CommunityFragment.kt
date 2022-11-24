@@ -1,5 +1,6 @@
 package com.example.cyclofit.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentCommunityBinding
 import com.example.cyclofit.model.Post
+import com.example.cyclofit.ui.activities.CreateCommunityActivity
+import com.example.cyclofit.ui.activities.PostActivity
 import com.example.cyclofit.ui.adapter.CommunityListAdapter
 import com.example.cyclofit.ui.adapter.AllPostAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
@@ -26,22 +29,14 @@ class CommunityFragment : BaseFragment() {
 
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
-        binding.fabNewCommunity.setOnClickListener {
-            val createFragment = CreateCommunityFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment_activity_dashboard,createFragment)
-                .commit()
-        }
 
         getAllPost()
 
         getCommunityList()
 
         binding.fab.setOnClickListener{
-            val postFragment=PostFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment_activity_dashboard,postFragment)
-                .commit()
+            val intent = Intent(requireContext(),PostActivity::class.java)
+            requireContext().startActivity(intent)
         }
         return binding.root
     }
@@ -49,7 +44,8 @@ class CommunityFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.create->{
-                Toast.makeText(activity,"Community Clicked",Toast.LENGTH_SHORT).show()
+                val intent  =Intent(requireContext(),CreateCommunityActivity::class.java)
+                requireContext().startActivity(intent)
             }
             R.id.join->{
                 Toast.makeText(activity,"Join Clicked",Toast.LENGTH_SHORT).show()
