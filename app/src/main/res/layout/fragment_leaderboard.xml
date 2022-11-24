@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:orientation="vertical"
             android:layout_marginTop="0dp"
-            android:background="@drawable/img_1" />
+            android:background="@drawable/background_img" />
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"

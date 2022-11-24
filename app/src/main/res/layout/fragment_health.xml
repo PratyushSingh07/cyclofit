@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:orientation="vertical"
-                android:background="@drawable/img_1"/>
+                android:background="@drawable/background_img"/>
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpChart"
                 android:layout_width="match_parent"
@@ -72,8 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vpChart"
-                app:tabSelectedTextColor="#40E0D0"
-                app:tabIndicatorColor="#40E0D0">
+                app:tabSelectedTextColor="@color/dark_green"
+                app:tabIndicatorColor="@color/dark_green">
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                     android:layout_height="150dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="15dp"
-                    android:backgroundTint="#40E0D0">
+                    android:backgroundTint="@color/dark_green">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -130,7 +130,7 @@
                     android:layout_height="150dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="15dp"
-                    android:backgroundTint="#40E0D0">
+                    android:backgroundTint="@color/dark_green">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -160,7 +160,7 @@
                     android:layout_height="150dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="15dp"
-                    android:backgroundTint="#40E0D0">
+                    android:backgroundTint="@color/dark_green">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -191,7 +191,7 @@
                     android:layout_height="150dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="15dp"
-                    android:backgroundTint="#40E0D0">
+                    android:backgroundTint="@color/dark_green">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
