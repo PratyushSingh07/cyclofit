@@ -7,13 +7,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rlSettings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
 
         <LinearLayout
             android:id="@+id/llSettings"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/img_1"
+            android:background="@drawable/background_img"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:backgroundTint="#40E0D0"
+                android:backgroundTint="@color/dark_green"
                 android:text="Light"
                 android:textSize="20sp"
                 app:cornerRadius="20dp" />
@@ -73,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:backgroundTint="#40E0D0"
+                android:backgroundTint="@color/dark_green"
                 android:text="Dark"
                 android:textSize="20sp"
                 app:cornerRadius="20dp" />
@@ -84,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/llSettings"
-            android:backgroundTint="#40E0D0"
+            android:backgroundTint="@color/dark_green"
             android:text="Logout"
             android:textAllCaps="false"
             android:textSize="22sp"

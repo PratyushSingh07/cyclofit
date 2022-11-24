@@ -16,7 +16,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class HealthFragment : Fragment() {
+class HealthFragment : BaseFragment() {
 
     lateinit var binding: FragmentHealthBinding
     private lateinit var mApiService: HeartApi
@@ -27,6 +27,7 @@ class HealthFragment : Fragment() {
     ): View {
         binding = FragmentHealthBinding.inflate(inflater, container, false)
 
+        showProgressDialog()
         fetchHeartRate()
 
         return binding.root
@@ -69,6 +70,7 @@ class HealthFragment : Fragment() {
     private fun setText(value: String) {
         requireActivity().runOnUiThread {
             binding.valueOfHeartRate.text = value
+            hideProgressDialog()
         }
     }
 

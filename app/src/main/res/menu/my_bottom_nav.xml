@@ -8,13 +8,17 @@
     <item
         android:id="@+id/community"
         android:icon="@drawable/ic_baseline_chat_24"
+        android:iconTint="@color/dark_green"
         android:title="Community"/>
     <item
         android:id="@+id/health"
         android:icon="@drawable/img"
+        android:iconTint="@color/dark_green"
+
         android:title="Health" />
     <item
         android:id="@+id/leaderboard"
         android:icon="@drawable/ic_baseline_leaderboard_24"
+        android:iconTint="@color/dark_green"
         android:title="Leaderboard" />
 </menu>
