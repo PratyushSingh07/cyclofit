@@ -1,37 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.CreateCommunityActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activities.PostActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
         >
 
-        <EditText
-            android:id="@+id/et_community_name"
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:background="@drawable/background_img"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/iv_select_community"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/select"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Community banner from gallery"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_edit_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginTop="20sp"
+            app:cardBackgroundColor="@color/semiTransparentColor"
+            android:outlineSpotShadowColor="@color/semiTransparentColor"
+            app:cardCornerRadius="2sp"
+            app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/cv_edit_heading"
+            >
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_create"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <EditText
+                    android:id="@+id/et_community_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textStart"
+                    android:padding="10sp"
+                    android:textColorHint="#8F8E8E"
+                    android:textColor="@color/black"
+                    android:gravity="start"
+                    android:background="@null"
+                    android:hint="Community Name" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:backgroundTint="@color/dark_green"
+            android:src="@drawable/ic_baseline_add_24"
+            app:tint = "@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="create"
-            app:layout_constraintTop_toBottomOf="@+id/et_community_name" />
+            android:layout_margin="20dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </LinearLayout>
 
 
 </FrameLayout>

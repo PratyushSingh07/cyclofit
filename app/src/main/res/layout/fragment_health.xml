@@ -72,7 +72,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vpChart"
+                android:background="@color/white"
                 app:tabSelectedTextColor="@color/dark_green"
+                app:tabTextColor="@color/black"
                 app:tabIndicatorColor="@color/dark_green">
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"

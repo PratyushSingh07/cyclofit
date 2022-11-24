@@ -19,13 +19,15 @@ class PostActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
+        supportActionBar?.hide()
+
         postImage.setOnClickListener {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(i, RESULT_LOAD_IMAGE)
         }
 
 
-        btn_post.setOnClickListener {
+        fab_post.setOnClickListener {
             showProgressbar()
 
             val postList = ArrayList<Post>()
