@@ -1,9 +1,8 @@
 package com.example.cyclofit.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentCommunityBinding
@@ -42,9 +41,21 @@ class CommunityFragment : BaseFragment() {
                 .replace(R.id.nav_host_fragment_activity_dashboard,postFragment)
                 .commit()
         }
+        binding.toolbarDashboard.inflateMenu(R.menu.commuity_top)
         return binding.root
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.create->{
+                Toast.makeText(activity,"Community Clicked",Toast.LENGTH_SHORT).show()
+            }
+            R.id.join->{
+                Toast.makeText(activity,"Join Clicked",Toast.LENGTH_SHORT).show()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
     private fun getAllPost() {
         showProgressDialog()
         FirestoreClass().getAllPost(this)
