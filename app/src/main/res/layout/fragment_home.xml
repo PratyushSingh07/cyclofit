@@ -6,313 +6,340 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.HomeFragment">
 
-    <RelativeLayout
-        android:id="@+id/homeFrag"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/ll"
+        <RelativeLayout
+            android:id="@+id/homeFrag"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical"
-            android:background="@drawable/background_img" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_home_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Hi, Pratyush Singh"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
-
-        <ImageView
-            android:id="@+id/userImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="15sp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/profile_icon" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_below="@id/ll">
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_gravity="bottom"-->
-<!--                android:gravity="center">-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0sp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:layout_margin="20dp">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="80dp"-->
-<!--                        android:scaleType="fitXY"-->
-<!--                        android:background="@drawable/distance"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="0"-->
-<!--                        android:textSize="28sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:gravity="center"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="km"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:gravity="center"/>-->
-<!--                </LinearLayout>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0sp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:layout_margin="20dp">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="80dp"-->
-<!--                        android:background="@drawable/heat"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="0"-->
-<!--                        android:textSize="28sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:gravity="center"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="kcal"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:gravity="center"/>-->
-<!--                </LinearLayout>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0sp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_gravity="bottom"-->
-<!--                    android:layout_margin="20dp">-->
-<!--                    <ImageView-->
-<!--                        android:id="@+id/distanceImg"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="80dp"-->
-<!--                        android:background="@drawable/stopwatch"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="00:00"-->
-<!--                        android:textSize="28sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:gravity="center"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Time"-->
-<!--                        android:textSize="18sp"-->
-<!--                        android:gravity="center"/>-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
             <LinearLayout
-                android:id="@+id/llTimer"
+                android:id="@+id/ll"
                 android:layout_width="match_parent"
-                android:gravity="center"
+                android:layout_height="200dp"
                 android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content">
-                <com.androchef.happytimer.countdowntimer.CircularCountDownView
-                    android:id="@+id/circularCountDownView"
-                    android:layout_width="260dp"
-                    android:layout_height="260dp"
-                    app:stroke_foreground_color="@color/colorLightBlue"
-                    app:stroke_background_thickness="31dp"
-                    app:stroke_foreground_thickness="40dp"
-                    app:timer_text_color="@color/colorLightBlue"
-                    app:timer_text_shown="true"
-                    app:timer_text_isBold="true"
-                    app:timer_text_format="HOUR_MINUTE_SECOND"
-                    app:timer_text_size="20sp"
-                    app:timer_type="COUNT_UP"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""/>
+                android:background="@drawable/background_img" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_home_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="Hi, Pratyush Singh"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+            <ImageView
+                android:id="@+id/userImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="15sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/profile_icon" />
 
             <LinearLayout
-                android:id="@+id/llBottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="12sp"
-                android:paddingLeft="10sp"
-                android:paddingTop="10sp"
-                android:paddingRight="10sp"
-                >
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_test"
-                    android:layout_width="0sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="16sp"
-                    android:layout_marginRight="12sp"
-                    android:layout_marginTop="2sp"
-                    android:layout_marginBottom="16sp"
-                    android:backgroundTint="#FFFFFf"
-                    android:outlineSpotShadowColor="@color/dark_green"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_below="@id/ll">
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:orientation="horizontal"-->
+                <!--                android:layout_gravity="bottom"-->
+                <!--                android:gravity="center">-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0sp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:layout_gravity="bottom"-->
+                <!--                    android:layout_margin="20dp">-->
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="80dp"-->
+                <!--                        android:scaleType="fitXY"-->
+                <!--                        android:background="@drawable/distance"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="0"-->
+                <!--                        android:textSize="28sp"-->
+                <!--                        android:textStyle="bold"-->
+                <!--                        android:gravity="center"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="km"-->
+                <!--                        android:textSize="18sp"-->
+                <!--                        android:gravity="center"/>-->
+                <!--                </LinearLayout>-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0sp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:layout_gravity="bottom"-->
+                <!--                    android:layout_margin="20dp">-->
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="80dp"-->
+                <!--                        android:background="@drawable/heat"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="0"-->
+                <!--                        android:textSize="28sp"-->
+                <!--                        android:textStyle="bold"-->
+                <!--                        android:gravity="center"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="kcal"-->
+                <!--                        android:textSize="18sp"-->
+                <!--                        android:gravity="center"/>-->
+                <!--                </LinearLayout>-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="0sp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:layout_gravity="bottom"-->
+                <!--                    android:layout_margin="20dp">-->
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/distanceImg"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="80dp"-->
+                <!--                        android:background="@drawable/stopwatch"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="00:00"-->
+                <!--                        android:textSize="28sp"-->
+                <!--                        android:textStyle="bold"-->
+                <!--                        android:gravity="center"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="Time"-->
+                <!--                        android:textSize="18sp"-->
+                <!--                        android:gravity="center"/>-->
+                <!--                </LinearLayout>-->
+                <!--            </LinearLayout>-->
+                <LinearLayout
+                    android:id="@+id/llTimer"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                    <com.androchef.happytimer.countdowntimer.CircularCountDownView
+                        android:id="@+id/circularCountDownView"
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        app:stroke_foreground_color="@color/colorLightBlue"
+                        app:stroke_background_thickness="31dp"
+                        app:stroke_foreground_thickness="40dp"
+                        app:timer_text_color="@color/colorLightBlue"
+                        app:timer_text_shown="true"
+                        app:timer_text_isBold="true"
+                        app:timer_text_format="HOUR_MINUTE_SECOND"
+                        app:timer_text_size="20sp"
+                        app:timer_type="COUNT_UP"
+                        />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        android:orientation="horizontal">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/setTimer"
+                            android:layout_marginTop="2dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingTop="10sp"
-                            android:paddingRight="10sp"
-                            android:paddingLeft="10sp"
-                            >
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100sp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/distance"
-                                />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical"
-                            android:padding="8sp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textSize="28sp"
-                                android:textStyle="bold"
-                                android:gravity="center"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="km"
-                                android:textSize="18sp"
-                                android:gravity="center"/>
-
-                        </LinearLayout>
+                            android:text="Set Timer"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/pauseTimer"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pause"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/resumeTimer"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Resume"/>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_result"
-                    android:layout_width="0sp"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llBottom"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="12sp"
-                    android:layout_marginRight="16sp"
-                    android:layout_marginTop="2sp"
-                    android:layout_marginBottom="20sp"
-                    android:backgroundTint="#FFFFFf"
-                    android:outlineSpotShadowColor="@color/dark_green"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="12sp"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="10sp"
+                    android:paddingRight="10sp"
+                    >
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:paddingTop="10sp"
-                            android:paddingRight="10sp"
-                            android:paddingLeft="10sp"
-                            >
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100sp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/heat"
-                                />
-
-
-                        </LinearLayout>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_test"
+                        android:layout_width="0sp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="16sp"
+                        android:layout_marginRight="12sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="16sp"
+                        android:backgroundTint="#FFFFFf"
+                        android:outlineSpotShadowColor="@color/dark_green"
+                        app:cardCornerRadius="15sp"
+                        app:cardElevation="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical"
-                            android:padding="8sp">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textSize="28sp"
-                                android:textStyle="bold"
-                                android:gravity="center"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="kcal"
-                                android:textSize="18sp"
-                                android:gravity="center"/>
+                                android:orientation="vertical"
+                                android:paddingTop="10sp"
+                                android:paddingRight="10sp"
+                                android:paddingLeft="10sp"
+                                >
 
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100sp"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/distance"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="8sp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28sp"
+                                    android:textStyle="bold"
+                                    android:gravity="center"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="km"
+                                    android:textSize="18sp"
+                                    android:gravity="center"/>
+
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_result"
+                        android:layout_width="0sp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="12sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginTop="2sp"
+                        android:layout_marginBottom="20sp"
+                        android:backgroundTint="#FFFFFf"
+                        android:outlineSpotShadowColor="@color/dark_green"
+                        app:cardCornerRadius="15sp"
+                        app:cardElevation="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:paddingTop="10sp"
+                                android:paddingRight="10sp"
+                                android:paddingLeft="10sp"
+                                >
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100sp"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/heat"
+                                    />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="8sp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28sp"
+                                    android:textStyle="bold"
+                                    android:gravity="center"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="kcal"
+                                    android:textSize="18sp"
+                                    android:gravity="center"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
+    </ScrollView>
 </FrameLayout>

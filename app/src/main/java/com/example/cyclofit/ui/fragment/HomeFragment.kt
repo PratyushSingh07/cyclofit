@@ -1,7 +1,9 @@
 package com.example.cyclofit.ui.fragment
 
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,13 +19,17 @@ import com.example.cyclofit.databinding.FragmentHomeBinding
 import com.example.cyclofit.ui.activities.SettingsActivity
 import com.example.cyclofit.ui.utils.Constants
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.dialog_set_time.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.net.URI.create
 
 
 class HomeFragment : BaseFragment() {
 
     lateinit var binding : FragmentHomeBinding
-
+    lateinit var timer:String
+    var isPause=false;
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +59,7 @@ class HomeFragment : BaseFragment() {
         binding.circularCountDownView.timerTextSize = 13f //this will automatically converted to sp value.
 
         //Initialize Your Timer with seconds
-        binding.circularCountDownView.initTimer(60)
+
 
         //set OnTickListener for getting updates on time. [Optional]
         binding.circularCountDownView.setOnTickListener(object : HappyTimer.OnTickListener {
@@ -82,13 +88,13 @@ class HomeFragment : BaseFragment() {
 
         //Call these functions to perform actions
         //Start Timer
-        binding.circularCountDownView.setOnClickListener{
-
-            binding.circularCountDownView.startTimer()
-        }
+//        binding.circularCountDownView.setOnClickListener{
+//
+//
+//        }
 
         //Pause Timer
-        binding.circularCountDownView.pauseTimer()
+
 
         //Resume Timer
 //        circularCountDownView.resumeTimer()
@@ -101,7 +107,33 @@ class HomeFragment : BaseFragment() {
 //
 //        //get Total Seconds
 //        val totalSeconds = circularCountDownView.getTotalSeconds()
+        binding.setTimer.setOnClickListener {
+            val builder=AlertDialog.Builder(activity)
+            val inflater=requireActivity().layoutInflater
+            val view=inflater.inflate(R.layout.dialog_set_time,null)
+            builder.setView(view).setTitle("Set the Time")
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+                .setPositiveButton("Proceed", DialogInterface.OnClickListener{
+                        dialog, id-> timer=view.setTimeText.text.toString()
+                        binding.circularCountDownView.initTimer(timer.toInt())
+                        binding.circularCountDownView.setOnClickListener {
+                            binding.circularCountDownView.startTimer()
+                        }
+                })
+            if (binding.circularCountDownView.isEnabled){
+                binding.pauseTimer.setOnClickListener {
+                    binding.circularCountDownView.pauseTimer()
+                }
+            }
+            binding.resumeTimer.setOnClickListener {
+                binding.circularCountDownView.resumeTimer()
+            }
+            val alert=builder.create()
+            alert.show()
 
+        }
         return binding.root
 
     }
