@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.databinding.UserCommunityMemberListBinding
 import com.example.cyclofit.model.Post
 import com.example.cyclofit.model.User
+import com.example.cyclofit.ui.utils.GlideLoader
 
 class AllPostAdapter(
     val context: Context,
@@ -31,6 +32,9 @@ class AllPostAdapter(
         val model = list[position]
 
         holder.binding.tvPostText.text = model.details
+        holder.binding.tvPostUser.text = model.name
+
+        GlideLoader(context).loadUserPicture(model.image,holder.binding.ivPostImage)
     }
 
     override fun getItemCount(): Int {

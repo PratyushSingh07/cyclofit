@@ -6,8 +6,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Post(
-//    val id  : String = " ",
+    val name  : String = " ",
+    val userImage : String = " ",
     val details : String = " ",
-//    val image : String = " ",
-//    val comm : String = " "
+    val image : String = " ",
+    val comm : String = " "
 ): Parcelable

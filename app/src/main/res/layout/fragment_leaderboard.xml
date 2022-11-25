@@ -20,16 +20,18 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/img_3"
+            android:src="@drawable/medal"
             android:layout_below="@id/llLeaderboard"
             android:layout_marginTop="28dp"
             android:layout_marginStart="15dp"/>
         <androidx.cardview.widget.CardView
             android:id="@+id/rankOfUser"
             app:cardCornerRadius="10dp"
-            app:cardElevation="20dp"
+            app:cardElevation="16dp"
             android:layout_marginTop="18dp"
+            android:layout_marginEnd="16sp"
             android:backgroundTint="#9CFB9C"
+            android:outlineSpotShadowColor="#9CFB9C"
             android:layout_width="300dp"
             android:layout_height="85dp"
             android:layout_below="@+id/llLeaderboard"
@@ -90,12 +92,15 @@
         <LinearLayout
             android:layout_below="@id/rankOfUser"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="16sp"
+            >
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvLeaderboard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                />
         </LinearLayout>
 
     </RelativeLayout>

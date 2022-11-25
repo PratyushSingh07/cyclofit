@@ -3,6 +3,7 @@ package com.example.cyclofit.ui.activities
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import com.example.cyclofit.R
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_post.*
 class CreateCommunityActivity : BaseActivity() {
 
     private val RESULT_LOAD_IMAGE = 1
+    lateinit var mBannerImage : Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,7 @@ class CreateCommunityActivity : BaseActivity() {
             val picturePath = cursor?.getString(columnIndex!!)
             cursor?.close()
             postImage.setImageBitmap(BitmapFactory.decodeFile(picturePath))
+            mBannerImage = data.data!!
         }
     }
 

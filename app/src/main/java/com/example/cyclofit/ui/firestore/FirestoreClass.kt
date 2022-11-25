@@ -1,5 +1,9 @@
 package com.example.cyclofit.ui.firestore
 
+import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -16,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class FirestoreClass {
 
@@ -70,6 +76,16 @@ class FirestoreClass {
 
                 //Here we have received the document snapshot which is converted into the User data model object.
                 val user = document.toObject(User::class.java)!!
+
+
+                val sharedPreferences = fragment.requireContext().getSharedPreferences(
+                    Constants.CYCLOFIT_PREFERENCES,
+                    Context.MODE_PRIVATE
+                )
+
+                val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(Constants.LOGGED_IN_USERNAME, user.name)
+                editor.apply()
 
 //                val sharedPreferences = fragment.getSharedPreferences(
 //                    Constants.CYCLOFIT_PREFERENCES,
@@ -158,6 +174,7 @@ class FirestoreClass {
     }
 
     fun createPost(activity: PostActivity,community: String,postList : ArrayList<Post>){
+
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
             .child(community)
             .setValue(postList)
@@ -228,6 +245,55 @@ class FirestoreClass {
                 }
             })
 
+    }
+
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?) {
+
+        //getting the storage reference
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
+            "post" + System.currentTimeMillis() + "."
+                    + Constants.getFileExtension(
+                activity,
+                imageFileURI
+            )
+        )
+
+        //adding the file to reference
+        sRef.putFile(imageFileURI!!)
+            .addOnSuccessListener { taskSnapshot ->
+                // The image upload is success
+                Log.e(
+                    "Firebase Image URL",
+                    taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
+                )
+
+                // Get the downloadable url from the task snapshot
+                taskSnapshot.metadata!!.reference!!.downloadUrl
+                    .addOnSuccessListener { uri ->
+                        Log.e("Downloadable Image URL", uri.toString())
+
+                        when (activity) {
+                            is PostActivity -> {
+                                activity.imageUploadSuccess(uri.toString())
+                            }
+                        }
+                        // END
+                    }
+            }
+            .addOnFailureListener { exception ->
+
+                // Hide the progress dialog if there is any error. And print the error in log.
+                when (activity) {
+                    is PostActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    "ABCD",
+                    exception.message,
+                    exception
+                )
+            }
     }
 
 }

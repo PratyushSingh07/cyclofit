@@ -6,10 +6,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardElevation="25dp"
+        app:cardElevation="20dp"
         app:cardCornerRadius="10dp"
-        android:layout_margin="10dp"
-        android:outlineAmbientShadowColor="@color/black">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="12sp"
+        android:outlineSpotShadowColor="@color/dark_green"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
