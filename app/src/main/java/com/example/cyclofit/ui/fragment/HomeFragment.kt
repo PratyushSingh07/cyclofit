@@ -52,9 +52,9 @@ class HomeFragment : BaseFragment() {
         binding.circularCountDownView.timerTextFormat = CircularCountDownView.TextFormat.HOUR_MINUTE_SECOND
         binding.circularCountDownView.strokeThicknessForeground = 10f
         binding.circularCountDownView.strokeThicknessBackground = 10f
-        binding.circularCountDownView.strokeColorBackground = ContextCompat.getColor(requireActivity(), R.color.purple_200)
-        binding.circularCountDownView.strokeColorForeground = ContextCompat.getColor(requireActivity(), R.color.purple_200)
-        binding.circularCountDownView.timerTextColor = ContextCompat.getColor(requireActivity(), R.color.purple_200)
+        binding.circularCountDownView.strokeColorBackground = ContextCompat.getColor(requireActivity(), R.color.dark_green)
+        binding.circularCountDownView.strokeColorForeground = ContextCompat.getColor(requireActivity(), R.color.dark_green)
+        binding.circularCountDownView.timerTextColor = ContextCompat.getColor(requireActivity(), R.color.dark_green)
         binding.circularCountDownView.timerTextIsBold = true
         binding.circularCountDownView.timerTextSize = 13f //this will automatically converted to sp value.
 
