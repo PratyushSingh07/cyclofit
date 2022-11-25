@@ -14,8 +14,16 @@ object Constants{
     const val LOGGED_IN_USERNAME = "name"
     const val CYCLOFIT_PREFERENCES : String = "cycloFit"
     const val ONBOARDING_FLAG : String = "no"
-    private const val PICK_IMAGE_REQUEST_CODE = 1
+    const val PICK_IMAGE_REQUEST_CODE = 1
     const val READ_STORAGE_PERMISSION_CODE = 2
+
+    const val EXTRA_USER_DETAILS = " "
+    const val USER_PROFILE_IMAGE = " "
+    const val NAME = "name"
+    const val IMAGE = "image"
+    const val MOBILE = "phone"
+    const val WEIGHT = "weight"
+    const val SOS = "sos"
 
 
     fun showImageChooser(activity : Activity)

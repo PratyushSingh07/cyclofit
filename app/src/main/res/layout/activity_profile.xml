@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.ProfileActivity"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_register_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="7sp"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="15sp"
+                android:layout_marginBottom="20sp"
+                android:layout_height="wrap_content"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10sp"
+                        android:contentDescription="TODO"
+                        android:src="@drawable/profile_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_select_profile"
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:src="@drawable/add_photo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="16sp"
+                android:textColor="@color/dark_green"
+                app:startIconDrawable="@drawable/ic_baseline_person_24"
+                android:textColorHint="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/dark_green"
+                app:startIconTint="@color/dark_green"
+                app:hintTextColor="@color/dark_green">
+
+                <EditText
+                    android:id="@+id/et_name_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full Name"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10sp"
+                    android:imeOptions="actionGo"
+                    android:cursorVisible="true"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="8sp"
+                android:textColor="@color/dark_green"
+                app:startIconDrawable="@drawable/ic_baseline_call_24"
+                android:textColorHint="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/dark_green"
+                app:startIconTint="@color/dark_green"
+                app:hintTextColor="@color/dark_green">
+
+                <EditText
+                    android:id="@+id/et_phoneNo_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone No"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10sp"
+                    android:imeOptions="actionGo"
+                    android:cursorVisible="true"
+                    android:inputType="phone"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="8sp"
+                android:textColor="@color/dark_green"
+                app:startIconDrawable="@drawable/ic_baseline_class_24"
+                android:textColorHint="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/dark_green"
+                app:startIconTint="@color/dark_green"
+                app:hintTextColor="@color/dark_green">
+
+                <EditText
+                    android:id="@+id/et_weight_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Weight"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10sp"
+                    android:imeOptions="actionGo"
+                    android:cursorVisible="true"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="8sp"
+                android:textColor="@color/dark_green"
+                app:startIconDrawable="@drawable/ic_baseline_work_24"
+                android:textColorHint="@color/dark_green"
+                app:boxStrokeColor="@color/dark_green"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/dark_green"
+                app:startIconTint="@color/dark_green"
+                app:hintTextColor="@color/dark_green">
+
+                <EditText
+                    android:id="@+id/et_sos_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Emergency No"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10sp"
+                    android:imeOptions="actionGo"
+                    android:cursorVisible="true"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:background="@color/dark_green"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginBottom="10sp"
+                android:paddingLeft="30sp"
+                android:paddingRight="30sp"
+                android:paddingTop="12sp"
+                android:paddingBottom="12sp"
+                android:layout_marginTop="20sp"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

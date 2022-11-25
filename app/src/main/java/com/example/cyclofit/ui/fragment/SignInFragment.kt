@@ -15,6 +15,7 @@ import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentSignInBinding
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.DashboardActivity
+import com.example.cyclofit.ui.activities.ProfileActivity
 import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -87,7 +88,7 @@ class SignInFragment : BaseFragment(){
         editor.apply()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(requireActivity(),DashboardActivity::class.java)
+            val intent = Intent(requireActivity(),ProfileActivity::class.java)
             requireActivity().startActivity(intent)
         }, 200)
     }

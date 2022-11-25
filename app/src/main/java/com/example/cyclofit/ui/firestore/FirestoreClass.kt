@@ -11,6 +11,7 @@ import com.example.cyclofit.model.Post
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.CreateCommunityActivity
 import com.example.cyclofit.ui.activities.PostActivity
+import com.example.cyclofit.ui.activities.ProfileActivity
 import com.example.cyclofit.ui.fragment.*
 import com.example.cyclofit.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -276,6 +277,9 @@ class FirestoreClass {
                             is PostActivity -> {
                                 activity.imageUploadSuccess(uri.toString())
                             }
+                            is ProfileActivity ->{
+                                activity.imageUploadSuccess(uri.toString())
+                            }
                         }
                         // END
                     }
@@ -296,4 +300,73 @@ class FirestoreClass {
             }
     }
 
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
+        mFirestore.collection(Constants.USERS)
+            .document(getCurrentUserId())
+            .update(userHashMap)
+            .addOnCompleteListener {
+
+                println("Yes profile updated")
+                when (activity) {
+                    is ProfileActivity -> {
+                        activity.userProfileUpdateSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is ProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    activity.javaClass.simpleName, "Error while updating the user_id Details", e
+                )
+            }
+    }
+
+    fun getUserDetails(activity: Activity){
+
+        //Here we pass the collection name from which we wants the data.
+        mFirestore.collection(Constants.USERS)
+            // the document id to get the field of User.
+            .document(getCurrentUserId())
+            .get()
+            .addOnSuccessListener { document->
+                Log.i(activity.javaClass.simpleName,document.toString())
+
+                //Here we have received the document snapshot which is converted into the User data model object.
+                val user = document.toObject(User::class.java)!!
+
+
+                val sharedPreferences = activity.getSharedPreferences(
+                    Constants.CYCLOFIT_PREFERENCES,
+                    Context.MODE_PRIVATE
+                )
+
+                val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(Constants.LOGGED_IN_USERNAME, user.name)
+                editor.apply()
+
+//                val sharedPreferences = fragment.getSharedPreferences(
+//                    Constants.CYCLOFIT_PREFERENCES,
+//                    Context.MODE_PRIVATE
+//                )
+//
+//                val editor : SharedPreferences.Editor = sharedPreferences.edit()
+//                //key : logged_in_success :Aditya Gupta
+//                editor.putString(Constants.LOGGED_IN_USERNAME," ${user.name}")
+//                editor.apply()
+//                //end
+
+                when(activity){
+                    is ProfileActivity ->
+                    {
+                        //call a function of base activity for transferring the result to it
+                        activity.userLoggedInSuccess(user)
+
+                    }
+                }
+            }
+    }
 }
