@@ -46,7 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_below="@id/ll">
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
@@ -132,9 +132,36 @@
 <!--                        android:gravity="center"/>-->
 <!--                </LinearLayout>-->
 <!--            </LinearLayout>-->
+            <LinearLayout
+                android:id="@+id/llTimer"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+                <com.androchef.happytimer.countdowntimer.CircularCountDownView
+                    android:id="@+id/circularCountDownView"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    app:stroke_foreground_color="@color/colorLightBlue"
+                    app:stroke_background_thickness="31dp"
+                    app:stroke_foreground_thickness="40dp"
+                    app:timer_text_color="@color/colorLightBlue"
+                    app:timer_text_shown="true"
+                    app:timer_text_isBold="true"
+                    app:timer_text_format="HOUR_MINUTE_SECOND"
+                    app:timer_text_size="20sp"
+                    app:timer_type="COUNT_UP"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
 
+            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llBottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
