@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.cyclofit.`interface`.HeartApi
 import com.example.cyclofit.databinding.FragmentHealthBinding
 import com.example.cyclofit.ui.activities.GraphActivity
+import com.example.cyclofit.ui.fragment.HomeFragment.Companion.timer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,12 +35,24 @@ import java.util.concurrent.TimeUnit
 
         showProgressDialog()
         fetchHeartRate()
+        fetchCalsBurnt()
         binding.cvOfHeartRate.setOnClickListener{
             startActivity(Intent(context,GraphActivity::class.java))
         }
         return binding.root
     }
-
+    private fun fetchCalsBurnt(){
+        // Duration of physical activity in minutes × (MET × 3.5 × your weight in kg) / 200 =calories burned per minute
+        var durationOfActivity=0;
+        if (!timer.isEmpty())
+         durationOfActivity= timer.toInt()//in minutes
+        val MET=12 // for bicycles
+        val wt=60 // in kg
+        var totalCalsBurnt=0.0;
+          totalCalsBurnt=durationOfActivity*(MET*3.5*wt)
+        totalCalsBurnt/=200*1000;
+        binding.valueOfKcalsBurnt.setText(totalCalsBurnt.toString())
+    }
     private fun fetchHeartRate() {
 
         val httpClient = OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS)

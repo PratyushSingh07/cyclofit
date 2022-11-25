@@ -97,5 +97,7 @@ dependencies {
     //Circular Timer View
     implementation 'com.github.happysingh23828:HappyTimer:1.0.1'
 
+    //Lottie
+    implementation 'com.airbnb.android:lottie:3.5.0'
 
 }

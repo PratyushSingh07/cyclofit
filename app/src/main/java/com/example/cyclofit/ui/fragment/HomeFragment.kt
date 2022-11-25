@@ -17,19 +17,22 @@ import com.androchef.happytimer.countdowntimer.CircularCountDownView
 import com.androchef.happytimer.countdowntimer.HappyTimer
 import com.example.cyclofit.databinding.FragmentHomeBinding
 import com.example.cyclofit.ui.activities.SettingsActivity
+import com.example.cyclofit.ui.fragment.LeaderboardFragment.Companion.list
 import com.example.cyclofit.ui.utils.Constants
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dialog_set_time.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.lang.Math.abs
 import java.net.URI.create
 
 
 class HomeFragment : BaseFragment() {
 
     lateinit var binding : FragmentHomeBinding
-    lateinit var timer:String
-    var isPause=false;
+    companion object{
+         var timer:String=""
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,7 +61,6 @@ class HomeFragment : BaseFragment() {
         binding.circularCountDownView.timerTextIsBold = true
         binding.circularCountDownView.timerTextSize = 13f //this will automatically converted to sp value.
 
-        //Initialize Your Timer with seconds
 
 
         //set OnTickListener for getting updates on time. [Optional]
@@ -86,18 +88,7 @@ class HomeFragment : BaseFragment() {
             }
         })
 
-        //Call these functions to perform actions
-        //Start Timer
-//        binding.circularCountDownView.setOnClickListener{
-//
-//
-//        }
 
-        //Pause Timer
-
-
-        //Resume Timer
-//        circularCountDownView.resumeTimer()
 //
 //        //Stop Timer
 //        circularCountDownView.stopTimer()
@@ -134,7 +125,19 @@ class HomeFragment : BaseFragment() {
             alert.show()
 
         }
+        var id=0;
+        // search ur name in the list
+        for (i in list){
+            if (i.name.equals(userName)){
+                id=i.id.toInt()
+                break
+            }
+        }
+        // if the name is found
+        if(id!=0){
+            println(id)
+            binding.distanceToBeCovered.setText(abs(list[id-2].distance.toDouble()-list[id-1].distance.toDouble()).toString())
+        }
         return binding.root
-
     }
 }

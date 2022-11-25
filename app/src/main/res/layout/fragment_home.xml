@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.HomeFragment">
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -19,7 +19,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:orientation="vertical"
-                android:background="@drawable/background_img" />
+                android:gravity="center"
+                android:background="@drawable/background_img" >
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="20dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginTop="60dp"
+                    android:layout_gravity="center">
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/distanceToBeCovered"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="30sp"
+                                android:text="0"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" km away to climb up"
+                                android:textSize="30sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_home_user_name"
@@ -161,88 +196,88 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-
-                        <com.androchef.happytimer.countdowntimer.CircularCountDownView
-                            android:id="@+id/circularCountDownView"
-                            android:layout_width="260dp"
-                            android:layout_height="260dp"
-                            android:padding="20sp"
-                            app:stroke_foreground_color="@color/colorLightBlue"
-                            app:stroke_background_thickness="31dp"
-                            app:stroke_foreground_thickness="40dp"
-                            app:timer_text_color="@color/colorLightBlue"
-                            app:timer_text_shown="true"
-                            app:timer_text_isBold="true"
-                            app:timer_text_format="HOUR_MINUTE_SECOND"
-                            app:timer_text_size="20sp"
-                            app:timer_type="COUNT_UP"
-                            />
-
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="10sp"
-                            >
+                            android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/setTimer"
-                                android:layout_width="40sp"
-                                android:layout_height="40sp"
-                                android:layout_marginEnd="10sp"
-                                android:src="@drawable/stop"
+
+                            <com.androchef.happytimer.countdowntimer.CircularCountDownView
+                                android:id="@+id/circularCountDownView"
+                                android:layout_width="260dp"
+                                android:layout_height="260dp"
+                                android:padding="20sp"
+                                app:stroke_foreground_color="@color/colorLightBlue"
+                                app:stroke_background_thickness="31dp"
+                                app:stroke_foreground_thickness="40dp"
+                                app:timer_text_color="@color/colorLightBlue"
+                                app:timer_text_shown="true"
+                                app:timer_text_isBold="true"
+                                app:timer_text_format="HOUR_MINUTE_SECOND"
+                                app:timer_text_size="20sp"
+                                app:timer_type="COUNT_UP"
                                 />
 
-<!--                            <com.google.android.material.button.MaterialButton-->
-<!--                                android:id="@+id/setTimer"-->
-<!--                                android:layout_marginTop="2dp"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="Set Timer"/>-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="10sp"
+                                >
 
-                            <ImageView
-                                android:id="@+id/pauseTimer"
-                                android:layout_width="40sp"
-                                android:layout_height="40sp"
-                                android:src="@drawable/pause"
-                                android:layout_marginEnd="10sp"
-                                />
+                                <ImageView
+                                    android:id="@+id/setTimer"
+                                    android:layout_width="40sp"
+                                    android:layout_height="40sp"
+                                    android:layout_marginEnd="10sp"
+                                    android:src="@drawable/stop"
+                                    />
 
-<!--                            <com.google.android.material.button.MaterialButton-->
-<!--                                android:id="@+id/pauseTimer"-->
-<!--                                android:layout_marginTop="2dp"-->
-<!--                                android:layout_marginLeft="15dp"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="Pause"/>-->
+                                <!--                            <com.google.android.material.button.MaterialButton-->
+                                <!--                                android:id="@+id/setTimer"-->
+                                <!--                                android:layout_marginTop="2dp"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:text="Set Timer"/>-->
 
-                            <ImageView
-                                android:id="@+id/resumeTimer"
-                                android:layout_width="40sp"
-                                android:layout_height="40sp"
-                                android:src="@drawable/play"
-                                />
+                                <ImageView
+                                    android:id="@+id/pauseTimer"
+                                    android:layout_width="40sp"
+                                    android:layout_height="40sp"
+                                    android:src="@drawable/pause"
+                                    android:layout_marginEnd="10sp"
+                                    />
+
+                                <!--                            <com.google.android.material.button.MaterialButton-->
+                                <!--                                android:id="@+id/pauseTimer"-->
+                                <!--                                android:layout_marginTop="2dp"-->
+                                <!--                                android:layout_marginLeft="15dp"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:text="Pause"/>-->
+
+                                <ImageView
+                                    android:id="@+id/resumeTimer"
+                                    android:layout_width="40sp"
+                                    android:layout_height="40sp"
+                                    android:src="@drawable/play"
+                                    />
 
 
-<!--                            <com.google.android.material.button.MaterialButton-->
-<!--                                android:id="@+id/resumeTimer"-->
-<!--                                android:layout_marginTop="2dp"-->
-<!--                                android:layout_marginLeft="15dp"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="Resume"/>-->
+                                <!--                            <com.google.android.material.button.MaterialButton-->
+                                <!--                                android:id="@+id/resumeTimer"-->
+                                <!--                                android:layout_marginTop="2dp"-->
+                                <!--                                android:layout_marginLeft="15dp"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:text="Resume"/>-->
+                            </LinearLayout>
+
+
+
                         </LinearLayout>
-
-
-
-                    </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
 
@@ -293,13 +328,12 @@
                                 android:paddingLeft="10sp"
                                 >
 
-                                <ImageView
+                                <com.airbnb.lottie.LottieAnimationView
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/distance"
-                                    />
-
+                                    app:lottie_rawRes="@raw/cycle"
+                                    app:lottie_autoPlay="true"
+                                    app:lottie_loop="true"/>
 
                             </LinearLayout>
 
@@ -361,12 +395,12 @@
                                 android:paddingLeft="10sp"
                                 >
 
-                                <ImageView
+                                <com.airbnb.lottie.LottieAnimationView
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/heat"
-                                    />
+                                    app:lottie_rawRes="@raw/cal"
+                                    app:lottie_autoPlay="true"
+                                    app:lottie_loop="true"/>
 
 
                             </LinearLayout>
@@ -403,5 +437,5 @@
 
         </RelativeLayout>
 
-    </ScrollView>
-</FrameLayout>
+    </FrameLayout>
+</ScrollView>
