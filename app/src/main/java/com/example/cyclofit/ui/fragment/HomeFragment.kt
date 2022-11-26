@@ -9,27 +9,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.cyclofit.R
-import androidx.navigation.Navigation.findNavController
 import com.androchef.happytimer.countdowntimer.CircularCountDownView
 import com.androchef.happytimer.countdowntimer.HappyTimer
 import com.example.cyclofit.databinding.FragmentHomeBinding
+import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.SettingsActivity
+import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.fragment.LeaderboardFragment.Companion.list
 import com.example.cyclofit.ui.utils.Constants
-import com.google.android.material.snackbar.Snackbar
+import com.example.cyclofit.ui.utils.GlideLoader
 import kotlinx.android.synthetic.main.dialog_set_time.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.lang.Math.abs
-import java.net.URI.create
 
 
 class HomeFragment : BaseFragment() {
 
     lateinit var binding : FragmentHomeBinding
+    lateinit var mUserDetails : User
     companion object{
          var timer:String=""
     }
@@ -140,4 +139,22 @@ class HomeFragment : BaseFragment() {
         }
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        showProgressDialog()
+        FirestoreClass().getUserDetails(this)
+//        FirestoreClass().allDistance(this)
+    }
+
+    fun userDetailsSuccess(user: User) {
+        hideProgressDialog()
+
+        GlideLoader(requireContext()).loadUserPicture(user.image,binding.userImage)
+    }
+
+    fun getDistanceSuccess(list: ArrayList<String>) {
+        tv_current_distance.text = list[list.size-2]
+    }
+
 }

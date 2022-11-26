@@ -7,11 +7,13 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.cyclofit.model.Distance
 import com.example.cyclofit.model.Post
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.CreateCommunityActivity
 import com.example.cyclofit.ui.activities.PostActivity
 import com.example.cyclofit.ui.activities.ProfileActivity
+import com.example.cyclofit.ui.activities.SettingsActivity
 import com.example.cyclofit.ui.fragment.*
 import com.example.cyclofit.ui.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -104,7 +106,9 @@ class FirestoreClass {
                     {
                         //call a function of base activity for transferring the result to it
                         fragment.userLoggedInSuccess(user)
-
+                    }
+                    is HomeFragment ->{
+                        fragment.userDetailsSuccess(user)
                     }
                 }
             }
@@ -364,7 +368,9 @@ class FirestoreClass {
                     {
                         //call a function of base activity for transferring the result to it
                         activity.userLoggedInSuccess(user)
-
+                    }
+                    is SettingsActivity->{
+                        activity.userDetailsSuccess(user)
                     }
                 }
             }
@@ -417,24 +423,61 @@ class FirestoreClass {
             }
     }
 
-//    private fun getCurrentCommunity(): String {
+//    fun getDistanceList(fragment: HomeFragment){
 //
-//        FirebaseDatabase.getInstance().getReference("current")
+//        val list = ArrayList<Distance>()
+//
+//        FirebaseDatabase.getInstance().getReference("distance").orderByValue()
 //            .addValueEventListener(object : ValueEventListener{
 //                override fun onDataChange(snapshot: DataSnapshot) {
 //                    if(snapshot.exists()){
 //
-////                        for (data in snapshot.children) {
-////                            val key = data.value
-////                        }
-//                        Constants.bingo = snapshot.key.toString()
+//                        for (data in snapshot.children) {
+//                            val value = data.getValue(Distance::class.java)
+//                            list.add(value!!)
+//                            Log.e("fuck", value.toString())
+//                        }
+//
+//                        list.shuffle()
 //                    }
+//                    else{
+//                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+//                    }
+//                    fragment.getDistanceSuccess(list)
 //                }
 //                override fun onCancelled(error: DatabaseError) {
 //                    TODO("Not yet implemented")
 //                }
 //            })
-//        Log.e("oo",Constants.bingo)
-//        return Constants.bingo
+//    }
+
+//    fun allDistance(fragment: Fragment){
+//
+//        mFirestore.collection("distance")
+//            .document("distance")
+//            .get()
+//            .addOnSuccessListener { document->
+//                Log.i(fragment.javaClass.simpleName,document.toString())
+//
+//                val exploreList : ArrayList<String> = ArrayList()
+//
+//                val explore = document.toObject(Distance::class.java)!!
+//
+//                for (i in explore.d) {
+//                    exploreList.add(i.toString())
+//                }
+//
+//
+//                when(fragment){
+//                    is HomeFragment ->
+//                    {
+//                        //call a function of base activity for transferring the result to it
+//                        fragment.getDistanceSuccess(exploreList)
+//                    }
+////                    is HomeFragment ->{
+////                        fragment.userDetailsSuccess(user)
+////                    }
+//                }
+//            }
 //    }
 }

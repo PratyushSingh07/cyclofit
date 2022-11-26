@@ -36,9 +36,7 @@ import java.util.concurrent.TimeUnit
     ): View {
         binding = FragmentHealthBinding.inflate(inflater, container, false)
 
-        showProgressDialog()
-        fetchHeartRate()
-        fetchCalsBurnt()
+
 
         val pager = binding.viewPager
         pager.isSaveEnabled = false
@@ -109,5 +107,11 @@ import java.util.concurrent.TimeUnit
         }
     }
 
+     override fun onResume() {
+         super.onResume()
+         showProgressDialog()
+         fetchHeartRate()
+         fetchCalsBurnt()
+     }
 
 }
