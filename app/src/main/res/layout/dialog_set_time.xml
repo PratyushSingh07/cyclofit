@@ -8,5 +8,6 @@
         android:id="@+id/setTimeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:hint="Set Time"/>
 </RelativeLayout>

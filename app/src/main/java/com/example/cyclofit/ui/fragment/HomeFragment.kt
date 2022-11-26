@@ -31,6 +31,7 @@ class HomeFragment : BaseFragment() {
     lateinit var mUserDetails : User
     companion object{
          var timer:String=""
+        var timeList=ArrayList<String>()
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -107,6 +108,7 @@ class HomeFragment : BaseFragment() {
                 })
                 .setPositiveButton("Proceed", DialogInterface.OnClickListener{
                         dialog, id-> timer=view.setTimeText.text.toString()
+                    timeList.add(timer)
                         binding.circularCountDownView.initTimer(timer.toInt())
                         binding.circularCountDownView.setOnClickListener {
                             binding.circularCountDownView.startTimer()
