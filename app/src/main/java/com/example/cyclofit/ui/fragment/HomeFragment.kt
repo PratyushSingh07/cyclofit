@@ -23,9 +23,11 @@ import com.example.cyclofit.ui.fragment.LeaderboardFragment.Companion.list
 import com.example.cyclofit.ui.utils.Constants
 import com.example.cyclofit.ui.utils.GlideLoader
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.dialog_set_time.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.lang.Math.abs
+import java.lang.reflect.Type
 
 
 class HomeFragment : BaseFragment() {
@@ -43,6 +45,14 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+
+        val sharedPreferences1 = requireContext().getSharedPreferences(Constants.CYCLOFIT_PREFERENCES,Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences1.getString("timer",null)
+
+        val type: Type = object : TypeToken<ArrayList<Shared?>?>() {}.type
+
+        sp = gson.fromJson(json,type)
 
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
