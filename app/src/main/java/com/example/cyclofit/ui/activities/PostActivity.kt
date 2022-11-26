@@ -7,10 +7,12 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import com.example.cyclofit.R
 import com.example.cyclofit.model.Post
 import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.utils.Constants
+import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : BaseActivity() {
@@ -18,6 +20,7 @@ class PostActivity : BaseActivity() {
     private val RESULT_LOAD_IMAGE = 1
     lateinit var mPostImage : Uri
     lateinit var postList : ArrayList<Post>
+    lateinit var filter : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,10 @@ class PostActivity : BaseActivity() {
 
         supportActionBar?.hide()
 
-        FirestoreClass().getAllPost(this)
+        filter = intent.getStringExtra(Constants.PUT_EXTRA).toString()
+        Log.e("fff",filter)
+
+        FirestoreClass().getAllPost(this,filter)
 
         postImage.setOnClickListener {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -75,7 +81,7 @@ class PostActivity : BaseActivity() {
             image = uri,
         )
         postList.add(posts)
-        FirestoreClass().createPost(this,"abcd",postList)
+        FirestoreClass().createPost(this,filter,postList)
     }
 
     fun getAllPostSuccess(list: ArrayList<Post>) {

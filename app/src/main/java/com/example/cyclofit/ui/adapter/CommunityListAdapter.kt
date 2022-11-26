@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.R
+import com.example.cyclofit.ui.firestore.FirestoreClass
+import com.example.cyclofit.ui.fragment.CommunityFragment
 import kotlinx.android.synthetic.main.item_community_list.view.*
 
 class CommunityListAdapter(
+    val context: CommunityFragment,
     private val list: ArrayList<String>
 ) : RecyclerView.Adapter<CommunityListAdapter.CommunityViewHolder>() {
 
@@ -23,7 +26,7 @@ class CommunityListAdapter(
         val model = list[position]
         holder.itemView.communityName.text = model
         holder.itemView.ll_community.setOnClickListener {
-
+            FirestoreClass().addCurrentCommunity(context,model)
         }
     }
 

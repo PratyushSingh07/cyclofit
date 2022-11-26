@@ -219,11 +219,11 @@ class FirestoreClass {
 
     }
 
-    fun getAllPost(fragment: CommunityFragment){
+    fun getAllPost(fragment: CommunityFragment,current : String){
 
         val list = ArrayList<Post>()
 
-        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child("abcd")
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child(current)
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
@@ -370,11 +370,11 @@ class FirestoreClass {
             }
     }
 
-    fun getAllPost(activity: PostActivity){
+    fun getAllPost(activity: PostActivity,current: String){
 
         val list = ArrayList<Post>()
 
-        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child("abcd")
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child(current)
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
@@ -398,4 +398,43 @@ class FirestoreClass {
             })
 
     }
+
+    fun addCurrentCommunity(fragment: CommunityFragment, model: String) {
+        FirebaseDatabase.getInstance().getReference("current")
+//            .child(community)
+            .setValue(model)
+            .addOnSuccessListener {
+                fragment.postFilter(model)
+
+            }
+            .addOnFailureListener { e->
+//                activity.hideProgressDialog()
+                Log.e(
+                    "Maa Baap ka pyaar check",
+                    "Error while registering the user_id.",
+                    e
+                )
+            }
+    }
+
+//    private fun getCurrentCommunity(): String {
+//
+//        FirebaseDatabase.getInstance().getReference("current")
+//            .addValueEventListener(object : ValueEventListener{
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    if(snapshot.exists()){
+//
+////                        for (data in snapshot.children) {
+////                            val key = data.value
+////                        }
+//                        Constants.bingo = snapshot.key.toString()
+//                    }
+//                }
+//                override fun onCancelled(error: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
+//            })
+//        Log.e("oo",Constants.bingo)
+//        return Constants.bingo
+//    }
 }

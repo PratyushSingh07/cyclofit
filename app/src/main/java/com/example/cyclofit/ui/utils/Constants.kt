@@ -24,6 +24,8 @@ object Constants{
     const val MOBILE = "phone"
     const val WEIGHT = "weight"
     const val SOS = "sos"
+    var bingo :String = ""
+    const val PUT_EXTRA = "put"
 
 
     fun showImageChooser(activity : Activity)

@@ -13,11 +13,13 @@ import com.example.cyclofit.ui.activities.PostActivity
 import com.example.cyclofit.ui.adapter.CommunityListAdapter
 import com.example.cyclofit.ui.adapter.AllPostAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
+import com.example.cyclofit.ui.utils.Constants
 
 
 class CommunityFragment : BaseFragment() {
 
     lateinit var binding : FragmentCommunityBinding
+    private var filter : String = "abcd"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +32,9 @@ class CommunityFragment : BaseFragment() {
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
 
-
-
         binding.fab.setOnClickListener{
             val intent = Intent(requireContext(),PostActivity::class.java)
+            intent.putExtra(Constants.PUT_EXTRA,filter)
             requireContext().startActivity(intent)
         }
         return binding.root
@@ -53,7 +54,7 @@ class CommunityFragment : BaseFragment() {
     }
     private fun getAllPost() {
         showProgressDialog()
-        FirestoreClass().getAllPost(this)
+        FirestoreClass().getAllPost(this,filter)
     }
 
     fun getAllPostSuccess(list: ArrayList<Post>) {
@@ -70,7 +71,7 @@ class CommunityFragment : BaseFragment() {
 
     fun getCommunityListSuccess(list: ArrayList<String>){
 
-        binding.rvCommunityName.adapter = CommunityListAdapter(list)
+        binding.rvCommunityName.adapter = CommunityListAdapter(this,list)
         binding.rvCommunityName.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
 
     }
@@ -88,5 +89,10 @@ class CommunityFragment : BaseFragment() {
         getAllPost()
         getCommunityList()
         super.onResume()
+    }
+
+    fun postFilter(model: String) {
+        filter = model
+        onResume()
     }
 }
