@@ -46,13 +46,17 @@ class HomeFragment : BaseFragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        val sharedPreferences1 = requireContext().getSharedPreferences(Constants.CYCLOFIT_PREFERENCES,Context.MODE_PRIVATE)
+        val sharedPreferences1 = requireContext().getSharedPreferences(
+            Constants.CYCLOFIT_PREFERENCES,
+            Context.MODE_PRIVATE
+        )
         val gson = Gson()
         val json = sharedPreferences1.getString("timer",null)
-
         val type: Type = object : TypeToken<ArrayList<Shared?>?>() {}.type
 
-        sp = gson.fromJson(json,type)
+        if(json!=null){
+            sp = gson.fromJson(json, type)
+        }
 
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
@@ -88,7 +92,7 @@ class HomeFragment : BaseFragment() {
 //
 //            //OnTimeUp
             override fun onTimeUp() {
-
+                fetchCalsBurnt()
             }
         })
 
@@ -159,7 +163,19 @@ class HomeFragment : BaseFragment() {
         }
         return binding.root
     }
+    private fun fetchCalsBurnt(){
+        // Duration of physical activity in minutes × (MET × 3.5 × your weight in kg) / 200 =calories burned per minute
+        var durationOfActivity=0;
+        if (!timer.isEmpty())
+            durationOfActivity= timer.toInt()//in minutes
+        val MET=12 // for bicycles
+        val wt=60 // in kg
+        var totalCalsBurnt=0.0;
+        totalCalsBurnt=durationOfActivity*(MET*3.5*wt)
+        totalCalsBurnt/=200*1000;
 
+        binding.cvOfKcal.setText(totalCalsBurnt.toString())
+    }
     override fun onResume() {
         super.onResume()
         showProgressDialog()

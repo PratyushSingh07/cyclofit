@@ -23,7 +23,7 @@ import java.lang.reflect.Type
 class TimeFragment : Fragment() {
 
     lateinit var binding:FragmentTimeBinding
-    lateinit var sp : ArrayList<Shared>
+     var sp = ArrayList<Shared>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,9 @@ class TimeFragment : Fragment() {
 
         val type: Type = object : TypeToken<ArrayList<Shared?>?>() {}.type
 
-        sp = gson.fromJson(json,type)
+        if(json!=null) {
+            sp = gson.fromJson(json, type)
+        }
 
         val barArrayList=mutableListOf<Entry>()
         var x:Int=0
