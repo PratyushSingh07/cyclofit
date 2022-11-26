@@ -1,31 +1,48 @@
 package com.example.cyclofit.ui.fragment
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cyclofit.R
+import androidx.fragment.app.Fragment
 import com.example.cyclofit.databinding.FragmentTimeBinding
+import com.example.cyclofit.model.Shared
 import com.example.cyclofit.ui.fragment.HomeFragment.Companion.timeList
-import com.github.mikephil.charting.charts.LineChart
+import com.example.cyclofit.ui.utils.Constants
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
+
 
 class TimeFragment : Fragment() {
+
     lateinit var binding:FragmentTimeBinding
+    lateinit var sp : ArrayList<Shared>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentTimeBinding.inflate(inflater,container,false)
+
+        val sharedPreferences = requireContext().getSharedPreferences(Constants.CYCLOFIT_PREFERENCES,Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("timer",null)
+
+        val type: Type = object : TypeToken<ArrayList<Shared?>?>() {}.type
+
+        sp = gson.fromJson(json,type)
+
         val barArrayList=mutableListOf<Entry>()
         var x:Int=0
-        for(i in timeList){
-            barArrayList.add(BarEntry(x*1f,i.toInt()*1f))
+        for(i in sp){
+            barArrayList.add(BarEntry(x*1f,i.time.toInt()*1f))
             x++
         }
 //        val lineChart=findViewById<LineChart>(com.example.cyclofit.R.id.reportingChart)

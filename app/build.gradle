@@ -100,4 +100,6 @@ dependencies {
     //Lottie
     implementation 'com.airbnb.android:lottie:3.5.0'
 
+    //shared
+    implementation 'com.google.code.gson:gson:2.10'
 }

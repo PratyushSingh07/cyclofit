@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +15,14 @@ import com.example.cyclofit.R
 import com.androchef.happytimer.countdowntimer.CircularCountDownView
 import com.androchef.happytimer.countdowntimer.HappyTimer
 import com.example.cyclofit.databinding.FragmentHomeBinding
+import com.example.cyclofit.model.Shared
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.SettingsActivity
 import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.fragment.LeaderboardFragment.Companion.list
 import com.example.cyclofit.ui.utils.Constants
 import com.example.cyclofit.ui.utils.GlideLoader
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.dialog_set_time.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.lang.Math.abs
@@ -29,6 +32,8 @@ class HomeFragment : BaseFragment() {
 
     lateinit var binding : FragmentHomeBinding
     lateinit var mUserDetails : User
+    var sp = ArrayList<Shared>()
+
     companion object{
          var timer:String=""
         var timeList=ArrayList<String>()
@@ -107,8 +112,11 @@ class HomeFragment : BaseFragment() {
                         dialog, id -> dialog.cancel()
                 })
                 .setPositiveButton("Proceed", DialogInterface.OnClickListener{
-                        dialog, id-> timer=view.setTimeText.text.toString()
-                    timeList.add(timer)
+                        dialog, id-> timer = view.setTimeText.text.toString()
+//                        timeList.add(timer)
+
+                        saveData(timer)
+
                         binding.circularCountDownView.initTimer(timer.toInt())
                         binding.circularCountDownView.setOnClickListener {
                             binding.circularCountDownView.startTimer()
@@ -157,6 +165,17 @@ class HomeFragment : BaseFragment() {
 
     fun getDistanceSuccess(list: ArrayList<String>) {
         tv_current_distance.text = list[list.size-2]
+    }
+
+    private fun saveData(timer: String) {
+        val sharedPreferences = requireContext().getSharedPreferences(Constants.CYCLOFIT_PREFERENCES,Context.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPreferences.edit()
+
+        val gson = Gson()
+        sp.add(Shared(timer))
+        val json = gson.toJson(sp)
+        editor.putString("timer",json)
+        editor.apply()
     }
 
 }
