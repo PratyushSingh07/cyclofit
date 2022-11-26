@@ -45,38 +45,9 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
 
 //        et_name_profile.setText(mUserDetails.name)
 
-        val sharedPreferences = getSharedPreferences(Constants.CYCLOFIT_PREFERENCES, Context.MODE_PRIVATE)
-        val check = sharedPreferences.getString(Constants.ONBOARDING_FLAG,"")!!
-
-        if(check=="yes")
-        {
-            title_profile.text = "Complete Profile"
-            et_name_profile.isEnabled = true
-            iv_select_profile.setImageDrawable(resources.getDrawable(R.drawable.add_photo))
-
-        }else{
-            title_profile.text = "Edit Profile"
-            GlideLoader(this).loadUserPicture(mUserDetails.image,user_image)
-            iv_select_profile.setImageDrawable(resources.getDrawable(R.drawable.add_photo))
-
-
-            if(mUserDetails.phone != 0L)
-            {
-                et_phoneNo_profile.setText(mUserDetails.phone.toString())
-            }
-            if(mUserDetails.weight.isNotEmpty())
-            {
-                et_weight_profile.setText(mUserDetails.weight)
-            }
-            if(mUserDetails.sos.isNotEmpty())
-            {
-                et_sos_profile.setText(mUserDetails.sos)
-            }
-            if(mUserDetails.name.isNotEmpty())
-            {
-                et_name_profile.setText(mUserDetails.name.toString())
-            }
-        }
+        title_profile.text = "Complete Profile"
+        et_name_profile.isEnabled = true
+        iv_select_profile.setImageDrawable(resources.getDrawable(R.drawable.add_photo))
 
         user_image.setOnClickListener(this)
         btn_done.setOnClickListener (this)
@@ -189,6 +160,7 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
             userHashMap[Constants.SOS] = stream
         }
 
+        userHashMap[Constants.PROFILE_COMPLETED] = 1
 
 //        showProgressbar(resources.getString(R.string.please_wait))
 

@@ -13,5 +13,6 @@ data class User(
     val phone :Long = 0L,
     val sos:String =" ",
     val weight : String = " ",
-    val image : String = " "
+    val image : String = " ",
+    val profile : Int = 0
 ):Parcelable

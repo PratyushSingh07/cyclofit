@@ -26,6 +26,7 @@ object Constants{
     const val SOS = "sos"
     var bingo :String = ""
     const val PUT_EXTRA = "put"
+    const val PROFILE_COMPLETED = "profile"
 
 
     fun showImageChooser(activity : Activity)

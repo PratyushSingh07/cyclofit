@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 class SignInFragment : BaseFragment(){
 
     lateinit var binding : FragmentSignInBinding
+    private lateinit var mUserDetails : User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,10 +88,19 @@ class SignInFragment : BaseFragment(){
         editor.putString(Constants.ONBOARDING_FLAG,"yes")
         editor.apply()
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(requireActivity(),ProfileActivity::class.java)
-            requireActivity().startActivity(intent)
-        }, 200)
+        if(user.profile == 0) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(requireActivity(), ProfileActivity::class.java)
+                requireActivity().startActivity(intent)
+                requireActivity().finish()
+            }, 200)
+        }else{
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(requireActivity(), DashboardActivity::class.java)
+                requireActivity().startActivity(intent)
+                requireActivity().finish()
+            }, 200)
+        }
     }
 
     private fun validateLoginDetails():Boolean {
