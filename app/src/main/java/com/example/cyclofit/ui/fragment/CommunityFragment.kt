@@ -30,9 +30,7 @@ class CommunityFragment : BaseFragment() {
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
 
-        getAllPost()
 
-        getCommunityList()
 
         binding.fab.setOnClickListener{
             val intent = Intent(requireContext(),PostActivity::class.java)
@@ -84,5 +82,11 @@ class CommunityFragment : BaseFragment() {
             onOptionsItemSelected(menuItem)
         }
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onResume() {
+        getAllPost()
+        getCommunityList()
+        super.onResume()
     }
 }

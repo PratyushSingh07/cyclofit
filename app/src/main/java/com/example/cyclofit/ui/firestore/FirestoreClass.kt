@@ -369,4 +369,33 @@ class FirestoreClass {
                 }
             }
     }
+
+    fun getAllPost(activity: PostActivity){
+
+        val list = ArrayList<Post>()
+
+        FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child("abcd")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.exists()){
+
+                        for (data in snapshot.children) {
+                            val value = data.getValue(Post::class.java)
+                            list.add(value!!)
+                            Log.e("fuck", value.toString())
+                        }
+
+                        list.shuffle()
+                    }
+                    else{
+                        Toast.makeText(activity,"Something went wrong",Toast.LENGTH_SHORT).show()
+                    }
+                    activity.getAllPostSuccess(list)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+    }
 }

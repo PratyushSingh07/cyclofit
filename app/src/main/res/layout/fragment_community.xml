@@ -64,14 +64,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_community_member"
-            app:layout_constraintTop_toBottomOf="@+id/llHealthImg"
             android:layout_width="match_parent"
-            android:layout_marginTop="8sp"
+            android:layout_height="0sp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="529sp"
-            tools:listitem="@layout/user_community_member_list"
-            android:layout_margin="4sp"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llHealthImg"
+            tools:layout_editor_absoluteX="4dp"
+            tools:listitem="@layout/user_community_member_list" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

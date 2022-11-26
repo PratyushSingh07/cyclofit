@@ -11,19 +11,21 @@ import com.example.cyclofit.R
 import com.example.cyclofit.model.Post
 import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.utils.Constants
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : BaseActivity() {
 
     private val RESULT_LOAD_IMAGE = 1
     lateinit var mPostImage : Uri
+    lateinit var postList : ArrayList<Post>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
         supportActionBar?.hide()
+
+        FirestoreClass().getAllPost(this)
 
         postImage.setOnClickListener {
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -62,7 +64,7 @@ class PostActivity : BaseActivity() {
 
 
     fun imageUploadSuccess(uri: String) {
-        val postList = ArrayList<Post>()
+//        val postList = ArrayList<Post>()
 
         val sharedPreferences = getSharedPreferences(Constants.CYCLOFIT_PREFERENCES, Context.MODE_PRIVATE)
         val userName = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME,"")!!
@@ -74,5 +76,9 @@ class PostActivity : BaseActivity() {
         )
         postList.add(posts)
         FirestoreClass().createPost(this,"abcd",postList)
+    }
+
+    fun getAllPostSuccess(list: ArrayList<Post>) {
+        postList = list
     }
 }
