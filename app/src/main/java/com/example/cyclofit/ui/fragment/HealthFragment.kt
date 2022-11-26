@@ -135,18 +135,19 @@ import java.util.concurrent.TimeUnit
 
          if(json!=null) {
              sp = gson.fromJson(json, type)
+
+             var x: Float = 0F
+             for (i in sp) {
+                 var y = i.time.toInt()
+                 val MET = 12 // for bicycles
+                 val wt = 60 // in kg
+                 var totalCalsBurnt = 0.0;
+                 totalCalsBurnt = y * (MET * 3.5 * wt)
+                 totalCalsBurnt /= 200 * 1000;
+                 x += totalCalsBurnt.toFloat()
+             }
+             binding.valueOfKcalsBurnt.text = String.format("%.2f", x).toDouble().toString()
          }
-         var x:Float= 0F
-         for(i in sp) {
-             var y = i.time.toInt()
-             val MET = 12 // for bicycles
-             val wt = 60 // in kg
-             var totalCalsBurnt = 0.0;
-             totalCalsBurnt = y * (MET * 3.5 * wt)
-             totalCalsBurnt /= 200 * 1000;
-             x += totalCalsBurnt.toFloat()
-         }
-         binding.valueOfKcalsBurnt.text = String.format("%.2f",x).toDouble().toString()
      }
 
 }
