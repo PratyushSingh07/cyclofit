@@ -5,27 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentLeaderboardBinding
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.adapter.LeaderboardAdapter
+import com.example.cyclofit.ui.firestore.FirestoreClass
 
-class LeaderboardFragment : Fragment() {
+class LeaderboardFragment : BaseFragment() {
 
+    private lateinit var list : ArrayList<User>
     private lateinit var binding: FragmentLeaderboardBinding
+
     companion object{
         var list=ArrayList<User>()
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding=FragmentLeaderboardBinding.inflate(inflater,container,false)
         binding.toolbarDashboard.inflateMenu(R.menu.leaderboard_top)
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
+
+
          list=ArrayList<User>()
         list.add(User("1","Pratyush","aries.@gmail.com","8.4"))
         list.add(User("2","Ayush","aries.@gmail.com","7.2"))
@@ -37,10 +41,23 @@ class LeaderboardFragment : Fragment() {
         list.add(User("8","Adiii","aries.@gmail.com","2.5"))
         list.add(User("9","Prince","aries.@gmail.com","1.7"))
         list.add(User("10","Ritik","aries.@gmail.com","0.8"))
-        binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),list)
-        binding.rvLeaderboard.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+
 
 
         return binding.root
+    }
+
+    fun getLeaderBoard(userList: ArrayList<User>) {
+
+        hideProgressDialog()
+
+        binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),userList)
+        binding.rvLeaderboard.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showProgressDialog()
+        FirestoreClass().getLeaderboardFragment(this)
     }
 }

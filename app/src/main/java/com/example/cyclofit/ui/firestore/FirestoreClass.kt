@@ -7,7 +7,6 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.cyclofit.model.Distance
 import com.example.cyclofit.model.Post
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.CreateCommunityActivity
@@ -480,4 +479,31 @@ class FirestoreClass {
 //                }
 //            }
 //    }
+
+
+    fun getLeaderboardFragment(fragment: Fragment) {
+
+        mFirestore.collection(Constants.USERS)
+            .get()
+            .addOnSuccessListener { document ->
+
+                val userList: ArrayList<User> = ArrayList()
+
+                for (i in document.documents) {
+                    val user = i.toObject(User::class.java)
+                    userList.add(user!!)
+                }
+
+//                val user = document.toObjects(User::class.java)
+//
+                when (fragment) {
+                    is LeaderboardFragment -> {
+                        fragment.getLeaderBoard(userList)
+                    }
+                }
+            }
+            .addOnFailureListener {
+
+            }
+    }
 }

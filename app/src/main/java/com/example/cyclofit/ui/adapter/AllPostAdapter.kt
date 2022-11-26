@@ -34,6 +34,7 @@ class AllPostAdapter(
         holder.binding.tvPostText.text = model.details
         holder.binding.tvPostUser.text = model.name
 
+        GlideLoader(context).loadUserPicture(model.userImage,holder.binding.ivPostUser)
         GlideLoader(context).loadUserPicture(model.image,holder.binding.ivPostImage)
     }
 

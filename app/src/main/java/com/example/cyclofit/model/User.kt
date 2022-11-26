@@ -9,7 +9,7 @@ data class User(
     val id : String = " ",
     val name : String = " ",
     val email : String = " ",
-    val distance: String=" ",
+    val distance: String="0.0",
     val phone :Long = 0L,
     val sos:String =" ",
     val weight : String = " ",
