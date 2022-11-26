@@ -20,8 +20,10 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 class KcalFragment : Fragment() {
+
     lateinit var binding: FragmentKcalBinding
     var sp = ArrayList<Shared>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
