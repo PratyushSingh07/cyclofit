@@ -65,14 +65,14 @@ class DashboardActivity:AppCompatActivity() {
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.nav_host_fragment_activity_dashboard, fragment)
-            commit()
+            commitNow()
         }
     private fun goHomeFragment(){
         val fragmentHome = HomeFragment()
         findViewById<ChipNavigationBar>(R.id.nav_view)?.setItemSelected(R.id.home)
         supportFragmentManager.beginTransaction().apply {
             add(R.id.nav_host_fragment_activity_dashboard,fragmentHome)
-            commit()
+            commitNow()
         }
     }
 }

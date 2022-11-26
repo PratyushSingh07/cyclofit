@@ -41,8 +41,9 @@ import java.util.concurrent.TimeUnit
         fetchCalsBurnt()
 
         val pager = binding.viewPager
+        pager.isSaveEnabled = false
         val tl = binding.tabs
-        pager.adapter = ViewAdapter(parentFragmentManager,lifecycle)
+        pager.adapter = ViewAdapter(childFragmentManager,lifecycle )
 
         TabLayoutMediator(tl,pager){ tab,position->
             tab.text = tabTitle[position]

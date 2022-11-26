@@ -17,8 +17,7 @@ class ViewAdapter(fragmentManager: FragmentManager,lifecycle : Lifecycle) : Frag
         when(position){
             0 -> return KcalFragment()
             1 -> return TimeFragment()
-            2 -> return DistanceFragment()
-            else -> return KcalFragment()
+            else -> return DistanceFragment()
         }
     }
 }
