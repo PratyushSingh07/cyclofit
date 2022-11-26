@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.widget.ViewPager2
 import com.example.cyclofit.`interface`.HeartApi
 import com.example.cyclofit.databinding.FragmentHealthBinding
 import com.example.cyclofit.ui.activities.GraphActivity
+import com.example.cyclofit.ui.adapter.ViewAdapter
 import com.example.cyclofit.ui.fragment.HomeFragment.Companion.timer
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +25,7 @@ import java.util.concurrent.TimeUnit
  class HealthFragment : BaseFragment() {
 
     lateinit var binding: FragmentHealthBinding
-    private lateinit var mApiService: HeartApi
+    var tabTitle  = arrayOf("Kcal","Time","Distance")
 
      companion object{
          var Datalist=ArrayList<String>()
@@ -36,6 +39,15 @@ import java.util.concurrent.TimeUnit
         showProgressDialog()
         fetchHeartRate()
         fetchCalsBurnt()
+
+        val pager = binding.viewPager
+        val tl = binding.tabs
+        pager.adapter = ViewAdapter(parentFragmentManager,lifecycle)
+
+        TabLayoutMediator(tl,pager){ tab,position->
+            tab.text = tabTitle[position]
+        }.attach()
+
         binding.cvOfHeartRate.setOnClickListener{
             startActivity(Intent(context,GraphActivity::class.java))
         }
@@ -95,5 +107,6 @@ import java.util.concurrent.TimeUnit
             hideProgressDialog()
         }
     }
+
 
 }

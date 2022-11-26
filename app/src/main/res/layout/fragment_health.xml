@@ -19,8 +19,8 @@
                 android:layout_height="200dp"
                 android:orientation="vertical"
                 android:background="@drawable/background_img"/>
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/vpChart"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_below="@+id/llHealth"
@@ -71,7 +71,7 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/vpChart"
+                android:layout_below="@id/viewPager"
                 android:background="@color/white"
                 app:tabSelectedTextColor="@color/dark_green"
                 app:tabTextColor="@color/black"

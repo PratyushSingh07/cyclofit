@@ -36,14 +36,14 @@ class SplashScreen : AppCompatActivity() {
                 startActivity(Intent(this, AuthenticationActivity::class.java))
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 finish()
-            }, 2000)
+            }, 3000)
         }
         else{
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(this, DashboardActivity::class.java))
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                 finish()
-            }, 2000)
+            }, 3000)
         }
     }
 }
