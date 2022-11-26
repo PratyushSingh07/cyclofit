@@ -1,23 +1,19 @@
 package com.example.cyclofit.ui.fragment
 
 
-import android.Manifest
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.cyclofit.R
 import com.androchef.happytimer.countdowntimer.CircularCountDownView
 import com.androchef.happytimer.countdowntimer.HappyTimer
-import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentHomeBinding
 import com.example.cyclofit.model.Shared
 import com.example.cyclofit.model.User
@@ -26,8 +22,6 @@ import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.fragment.LeaderboardFragment.Companion.list
 import com.example.cyclofit.ui.utils.Constants
 import com.example.cyclofit.ui.utils.GlideLoader
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.dialog_set_time.view.*
@@ -41,7 +35,6 @@ class HomeFragment : BaseFragment() {
     lateinit var binding : FragmentHomeBinding
     lateinit var mUserDetails : User
     var sp = ArrayList<Shared>()
-    private val client: FusedLocationProviderClient? = null
 
     companion object{
          var timer:String=""
@@ -138,29 +131,7 @@ class HomeFragment : BaseFragment() {
 
                         saveData(timer)
 
-                    if (ActivityCompat.checkSelfPermission(
-                             requireActivity(),
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                        ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                            requireActivity(),
-                            Manifest.permission.ACCESS_COARSE_LOCATION
-                        ) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
 
-                    }
-                    client?.lastLocation?.addOnSuccessListener(requireActivity(),
-                        OnSuccessListener<Any?> { location ->
-                            if (location != null) {
-                                Toast.makeText(activity,"${location.toString()}",Toast.LENGTH_SHORT).show()
-                            }
-                        })
 
                         binding.circularCountDownView.initTimer(timer.toInt())
                         binding.circularCountDownView.setOnClickListener {

@@ -494,7 +494,10 @@ class FirestoreClass {
                     userList.add(user!!)
                 }
 
-//                val user = document.toObjects(User::class.java)
+//                var newList = ArrayList<User>()
+
+//                newList = userList.sortBy{it.distance} as ArrayList<User>
+
 //
                 when (fragment) {
                     is LeaderboardFragment -> {
