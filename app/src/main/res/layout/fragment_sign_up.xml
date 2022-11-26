@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.SignUpFragment">
+    tools:context=".ui.fragment.SignUpFragment"
+    android:background="@color/white"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,11 +23,24 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_marginTop="40sp"
-                android:layout_width="200sp"
-                android:layout_height="200sp" />
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@drawable/background_img"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="200sp"
+                    android:layout_height="200sp"
+                    android:src="@drawable/signup_image"
+                    />
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/textView4"

@@ -62,8 +62,7 @@ import java.util.concurrent.TimeUnit
             level = HttpLoggingInterceptor.Level.BODY
         })
 
-        val retrofit =
-            Retrofit.Builder().baseUrl("https://api.thingspeak.com/channels/1951371/fields/")
+        val retrofit = Retrofit.Builder().baseUrl("https://api.thingspeak.com/channels/1951371/fields/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build()
