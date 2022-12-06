@@ -70,7 +70,7 @@ Our app has many essential features to track and analyse the performance of a cy
   </table>
 
 <p><h2><a id="index8"></a>🤝 Contribute</h2></p>
-<p>Contributions are always welcome! Please create a PR to make a contribution.</p>
+<p>Contributions are always welcome! Please read the contribution.md file to start off with the contribution.</p>
 
 
 <p><h2><a id="index9"></a>❤ Show your support</h2></p>
