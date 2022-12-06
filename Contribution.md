@@ -11,7 +11,7 @@ If you'd like to contribute, a good place to start is by searching through the i
 2.Once assigned, Fork the project.<br>
 3.Clone your fork.<br> 
 ```xml 
-git clone https://github.com/<YOUR-USERNAME>/Cyclofit
+git clone https://github.com/<YOUR-USERNAME>/cyclofit
 ```
 4.Before start working, create a new branch from the current branch
 ```xml
@@ -30,4 +30,4 @@ git checkout -b <YOUR-NEW-BRANCH>
   git push origin {YOUR BRANCH NAME}
   ```
  8.From your forked repository, open a new pull request. In the description of the PR mention the issue that is being solved and add relevant screenshots.<br><br>
- 9.Wait for the PR to merged and look out for anothrr issues in the meantime
+ 9.Wait for the PR to merged and look out for another issues in the meantime
