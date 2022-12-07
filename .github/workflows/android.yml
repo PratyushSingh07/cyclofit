@@ -1,0 +1,30 @@
+name: Android Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, edited]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set Up JDK              
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Change wrapper permissions  
+        run: chmod +x ./gradlew
+
+      - name: Run Tests                    
+        run: ./gradlew test
+
+      - name: Build Project               
+        run: ./gradlew assemble
