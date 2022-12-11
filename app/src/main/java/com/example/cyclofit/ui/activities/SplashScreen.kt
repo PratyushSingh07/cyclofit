@@ -1,23 +1,31 @@
 package com.example.cyclofit.ui.activities
 
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.WindowManager
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cyclofit.R
 import com.google.firebase.auth.FirebaseAuth
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+    private lateinit var mSharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-
         supportActionBar?.hide()
 
         window.setFlags(
@@ -25,6 +33,9 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
+
+        //checkDarkMode
+        checkDarkMode()
         val linear = findViewById<LinearLayout>(R.id.background_splash_screen)
         val animationDrawable = linear.background as AnimationDrawable
         animationDrawable.setEnterFadeDuration(2000)
@@ -46,4 +57,17 @@ class SplashScreen : AppCompatActivity() {
             }, 3000)
         }
     }
+
+
+    fun checkDarkMode(){
+        mSharedPreferences = getSharedPreferences("NightMode", 0)
+        val mThemeAppState = mSharedPreferences.all["night"]
+
+        if(mThemeAppState== true){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
 }

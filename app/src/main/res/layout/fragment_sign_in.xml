@@ -14,7 +14,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/backgroundColor"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +65,7 @@
                 android:textColor="@color/dark_green"
                 app:startIconDrawable="@drawable/ic_baseline_alternate_email_24"
                 android:textColorHint="@color/dark_green"
-                app:boxStrokeColor="@color/dark_green"
+
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/dark_green"
                 app:startIconTint="@color/dark_green"
@@ -96,9 +98,8 @@
                 app:startIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/dark_green"
-                app:boxStrokeColor="@color/dark_green"
-                app:startIconTint="@color/dark_green"
 
+                app:startIconTint="@color/dark_green"
                 app:hintTextColor="@color/dark_green">
 
                 <EditText
@@ -106,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
+
                     android:textSize="16sp"
                     android:textColor="@color/dark_green"
                     android:layout_marginBottom="20sp"
@@ -126,7 +128,7 @@
                     android:layout_weight="1.5"
                     android:layout_marginTop="16dp"
                     android:text="Forget your Password?"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColor"
                     android:textAlignment="textEnd"
                     android:textSize="16sp" />
 
@@ -137,8 +139,9 @@
                     android:layout_weight="1"
                     android:layout_marginTop="16dp"
                     android:text="Recover it"
-                    android:paddingLeft="10sp"
-                    android:textColor="@color/dark_green"
+                    android:paddingStart="10sp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/linkColor"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -172,7 +175,7 @@
                     android:layout_weight="1.5"
                     android:layout_marginTop="16dp"
                     android:text="Don't have an account? "
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColor"
                     android:textAlignment="textEnd"
                     android:textSize="16sp" />
 
@@ -183,8 +186,9 @@
                     android:layout_weight="1"
                     android:layout_marginTop="16dp"
                     android:text="Sign Up"
-                    android:paddingLeft="10sp"
-                    android:textColor="@color/dark_green"
+                    android:paddingStart="10sp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/linkColor"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>

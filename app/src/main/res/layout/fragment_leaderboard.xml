@@ -8,7 +8,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        >
 
         <LinearLayout
             android:id="@+id/llLeaderboard"
@@ -131,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16sp"
+            android:background="@color/backgroundColor"
             >
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvLeaderboard"

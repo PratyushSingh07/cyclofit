@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:scrollbars="none"
     tools:context=".ui.fragment.HealthFragment">
 
@@ -11,27 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:id="@+id/llHealth"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:orientation="vertical"
+                android:background="@drawable/background_img"
                 android:gravity="center"
-                android:background="@drawable/background_img">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Track Your Performance"
-                    android:textSize="20sp"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
@@ -85,147 +88,170 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/viewPager"
-                android:background="@color/white"
+                android:background="@color/backgroundColor"
+                app:tabIndicatorColor="@color/dark_green"
                 app:tabSelectedTextColor="@color/dark_green"
-                app:tabTextColor="@color/black"
-                app:tabIndicatorColor="@color/dark_green">
+                app:tabTextColor="@color/textColor">
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kcal" />
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time"/>
+                    android:text="Time" />
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Distance"/>
+                    android:text="Distance" />
             </com.google.android.material.tabs.TabLayout>
 
             <RelativeLayout
                 android:id="@+id/cardViewRL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tabs">
+                android:layout_below="@id/tabs"
+                android:background="@color/backgroundColor">
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/heartRate"
-                    android:layout_margin="10dp"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/dark_green"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp"
-                    android:backgroundTint="@color/dark_green">
+                    app:cardElevation="15dp">
+
                     <LinearLayout
                         android:id="@+id/cvOfHeartRate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/valueOfHeartRate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 bpm"
                             android:layout_margin="8dp"
-                            android:textSize="38sp"/>
+                            android:fontFamily="@font/lato"
+                            android:text="0 bpm"
+                            android:textSize="35sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/lato"
                             android:hint="Heart Rate"
-                            android:textSize="18sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
-                    android:layout_toRightOf="@id/heartRate"
                     android:id="@+id/cyclingSpeed"
-                    android:layout_margin="10dp"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@id/heartRate"
+                    android:backgroundTint="@color/dark_green"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp"
-                    android:backgroundTint="@color/dark_green">
+                    app:cardElevation="15dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/valueOfCyclingSpeed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 kmph"
                             android:layout_margin="8dp"
-                            android:textSize="38sp"/>
+                            android:fontFamily="@font/lato"
+                            android:text="0 kmph"
+                            android:textSize="35sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+
                             android:hint="Cycling Speed"
-                            android:textSize="18sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/kcalsBurnt"
-                    android:layout_below="@id/heartRate"
-                    android:layout_margin="10dp"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
+                    android:layout_below="@id/heartRate"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/dark_green"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp"
-                    android:backgroundTint="@color/dark_green">
+                    app:cardElevation="15dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/valueOfKcalsBurnt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 Kcal"
                             android:layout_margin="8dp"
-                            android:textSize="38sp"/>
+                            android:text="0 Kcal"
+                            android:textSize="35sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:hint="Kcals Burnt"
-                            android:textSize="18sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/distanceCovered"
-                    android:layout_toRightOf="@id/kcalsBurnt"
-                    android:layout_below="@id/cyclingSpeed"
-                    android:layout_margin="10dp"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
+                    android:layout_below="@id/cyclingSpeed"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@id/kcalsBurnt"
+                    android:backgroundTint="@color/dark_green"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp"
-                    android:backgroundTint="@color/dark_green">
+                    app:cardElevation="15dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/valueOfDistanceCovered"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 Km"
                             android:layout_margin="8dp"
-                            android:textSize="38sp"/>
+                            android:text="0 Km"
+                            android:textSize="35sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:hint="Distance Covered"
-                            android:textSize="18sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="18sp" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
