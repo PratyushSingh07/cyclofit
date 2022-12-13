@@ -98,7 +98,7 @@ dependencies {
     implementation 'com.github.happysingh23828:HappyTimer:1.0.1'
 
     //Lottie
-    implementation 'com.airbnb.android:lottie:3.5.0'
+    implementation 'com.airbnb.android:lottie:5.2.0'
 
     //shared
     implementation 'com.google.code.gson:gson:2.10'

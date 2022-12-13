@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white"
+        android:background="@color/backgroundColor"
         >
 
         <LinearLayout
@@ -54,7 +54,7 @@
             android:layout_marginLeft="20sp"
             android:layout_marginRight="20sp"
             android:layout_marginTop="20sp"
-            app:cardBackgroundColor="@color/semiTransparentColor"
+            app:cardBackgroundColor="@color/backgroundColor"
             android:outlineSpotShadowColor="@color/semiTransparentColor"
             app:cardCornerRadius="2sp"
             app:cardElevation="10dp"
@@ -65,20 +65,39 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/postDescription"
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="textStart"
-                    android:padding="10sp"
-                    android:textColorHint="#8F8E8E"
-                    android:textColor="@color/black"
-                    android:gravity="start"
-                    android:background="@null"
-                    android:hint="Share what you see" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginRight="30sp"
+                    android:textColor="@color/dark_green"
+                    android:textColorHint="@color/dark_green"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/dark_green"
+                    app:hintAnimationEnabled="true"
+
+                    app:hintTextColor="@color/dark_green"
+                    app:startIconTint="@color/dark_green">
+
+
+                    <EditText
+                        android:id="@+id/postDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:gravity="top"
+                        android:hint="What's Interesting :)"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:padding="15dp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

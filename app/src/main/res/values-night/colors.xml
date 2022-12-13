@@ -11,8 +11,8 @@
 
     <color name="dark_green">#92b2fd</color>
     <color name="light_green">#92b2fd</color>
-    <color name="textColor">#000000</color>
-    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="backgroundColor">#000000</color>
     <color name="colorSnackBarError">#F72400</color>
     <color name="colorSnackBarSuccess">#8BC34A</color>
     <color name="linkColor">#92b2fd</color>

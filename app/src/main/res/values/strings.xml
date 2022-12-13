@@ -8,4 +8,13 @@
     <string name="err_msg_agree">Please agree terms and condition</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="DialogTitle">Choose Theme</string>
+    <string name="climbuptxt">km away to climb up</string>
+    <string-array name="DialogContents">
+        <item>>White Theme</item>
+        <item>Black Theme</item>
+        <item>System Default</item>
+
+    </string-array>
+
 </resources>

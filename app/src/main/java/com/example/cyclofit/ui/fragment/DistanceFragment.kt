@@ -27,7 +27,7 @@ class DistanceFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
        binding=FragmentDistanceBinding.inflate(inflater,container,false)
         val sharedPreferences1 = requireContext().getSharedPreferences(
             Constants.CYCLOFIT_PREFERENCES,

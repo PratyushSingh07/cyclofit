@@ -1,19 +1,29 @@
 package com.example.cyclofit.ui.activities
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cyclofit.R
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.firestore.FirestoreClass
+import com.example.cyclofit.ui.fragment.DialogFragment
 import com.example.cyclofit.ui.utils.GlideLoader
-import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity :AppCompatActivity(){
 
+    private lateinit var selectThemeBtn:Button
+    private var nightMode:Boolean = false
+    private lateinit var sharedPreferences:SharedPreferences
+    private lateinit var editor:Editor
+    lateinit var dialogFragment: DialogFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -23,8 +33,17 @@ class SettingsActivity :AppCompatActivity(){
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
+        dialogFragment = DialogFragment()
 
-        val btn =findViewById<MaterialButton>(R.id.logoutButton)
+
+        selectThemeBtn = findViewById(R.id.changeThemeButton)
+        changeAppTheme()
+//        //getTheDarkMode
+//        sharedPreferences = getSharedPreferences("NightMode",0)
+//        nightMode = sharedPreferences.getBoolean("isNewUser",false)
+//        getDarkMode(nightMode)
+
+        val btn = findViewById<Button>(R.id.logoutButton)
         btn.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
             finish()
@@ -41,6 +60,16 @@ class SettingsActivity :AppCompatActivity(){
         GlideLoader(this).loadUserPicture(user.image,profileIcon)
         tv_name.text = user.name
         tv_email.text = user.email
-
     }
+
+
+    private fun changeAppTheme(){
+        selectThemeBtn.setOnClickListener {
+            dialogFragment.show(supportFragmentManager,"customDialog")
+//            editor = sharedPreferences.edit()
+//            editor.putBoolean("isNewUser",false)
+        }
+    }
+
+
 }

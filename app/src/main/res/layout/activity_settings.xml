@@ -2,13 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activities.SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rlSettings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/backgroundColor"
         >
 
         <LinearLayout
@@ -25,8 +27,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Aditya"
-            android:textColor="#605F5F"
+            tools:text="Aditya"
+            android:textColor="@color/textColor"
             android:layout_marginTop="20sp"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,53 +50,138 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-        <LinearLayout
+
+        <View android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/textColor"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/llSettings"
-            android:background="@drawable/background_line"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="25sp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_email">
 
-            <com.google.android.material.button.MaterialButton
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:backgroundTint="@color/dark_green"
-                android:text="Light"
-                android:textSize="20sp"
-                app:cornerRadius="20dp" />
+                >
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:backgroundTint="@color/dark_green"
-                android:text="Dark"
-                android:textSize="20sp"
-                app:cornerRadius="20dp" />
-        </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/appthemetext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="18dp"
+                    android:text="App Theme"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/logoutButton"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textthemesubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/appthemetext"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="15dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorGrey"
+                    android:layout_marginTop="2dp"
+                    android:text="Choose Your App Theme" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/changeThemeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/roundedbtn"
+                    android:gravity="center"
+                    android:text="Theme"
+                    android:textAllCaps="false"
+                    app:cornerRadius="10dp"
+                    android:layout_alignParentTop="true"
+                    />
+
+            </RelativeLayout>
+
+
+
+
+
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/lightMode"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:backgroundTint="@color/dark_green"-->
+<!--                android:text="Light"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18sp"-->
+<!--                app:cornerRadius="20dp" />-->
+
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/darkMode"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:backgroundTint="@color/dark_green"-->
+<!--                android:text="Dark"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18sp"-->
+<!--                app:cornerRadius="20dp" />-->
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/llSettings"
-            android:backgroundTint="@color/dark_green"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:textSize="22sp"
-            app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            android:layout_marginBottom="30dp"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:backgroundTint="@color/dark_green"
+                android:text="Logout"
+                android:background="@drawable/roundedbtn"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+
+        </RelativeLayout>
+
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileIcon"

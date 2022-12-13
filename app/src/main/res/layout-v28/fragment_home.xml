@@ -48,6 +48,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="25sp"
+                                android:layout_margin="5dp"
                                 android:layout_gravity="center"
                                 android:textColor="@color/black"
                                 android:text="0"/>
@@ -199,7 +200,7 @@
                         android:backgroundTint="#FFFFFf"
                         android:outlineSpotShadowColor="@color/white"
                         app:cardCornerRadius="15sp"
-                        app:cardElevation="20sp"
+                        app:cardElevation="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -298,7 +299,6 @@
 
                 <LinearLayout
                     android:id="@+id/llBottom"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -309,7 +309,7 @@
                     >
                     <!-- for 1st card view-->
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/cv_test"
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
@@ -317,12 +317,11 @@
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="12sp"
                         android:layout_marginTop="2sp"
-
                         android:layout_marginBottom="16sp"
                         android:backgroundTint="#FFFFFF"
                         android:outlineSpotShadowColor="@color/dark_green"
                         app:cardCornerRadius="15sp"
-                        app:cardElevation="20sp"
+                        app:cardElevation="100sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -351,7 +350,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
                                     app:lottie_rawRes="@raw/cycle"
-                                    app:lottie_fileName="cal.json"
                                     app:lottie_autoPlay="true"
                                     app:lottie_loop="true"
 
@@ -385,11 +383,11 @@
 
                             </LinearLayout>
                         </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
+                    </androidx.cardview.widget.CardView>
 
                     <!-- for second carview-->
 
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/cv_result"
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
@@ -401,7 +399,7 @@
                         android:backgroundTint="#FFFFFf"
                         android:outlineSpotShadowColor="@color/dark_green"
                         app:cardCornerRadius="15sp"
-                        app:cardElevation="20sp"
+                        app:cardElevation="100sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -424,7 +422,6 @@
                                 >
 
                                 <com.airbnb.lottie.LottieAnimationView
-                                    android:id="@+id/calLottie"
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
                                     app:lottie_rawRes="@raw/cal"
@@ -460,7 +457,7 @@
 
                             </LinearLayout>
                         </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
             </LinearLayout>

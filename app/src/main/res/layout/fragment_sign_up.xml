@@ -15,7 +15,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/backgroundColor"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,7 +70,6 @@
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/dark_green"
                 app:startIconTint="@color/dark_green"
-                app:boxStrokeColor="@color/dark_green"
                 app:hintTextColor="@color/dark_green">
 
                 <EditText
@@ -93,11 +94,9 @@
                 android:textColor="@color/dark_green"
                 app:startIconDrawable="@drawable/ic_baseline_alternate_email_24"
                 android:textColorHint="@color/dark_green"
-                app:boxStrokeColor="@color/dark_green"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/dark_green"
                 app:startIconTint="@color/dark_green"
-
                 app:hintTextColor="@color/dark_green">
 
                 <EditText
@@ -105,6 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
+
                     android:textColor="@color/dark_green"
                     android:textSize="16sp"
                     android:imeOptions="actionGo"
@@ -125,9 +125,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/dark_green"
-                app:boxStrokeColor="@color/dark_green"
                 app:startIconTint="@color/dark_green"
-
                 app:hintTextColor="@color/dark_green">
 
                 <EditText
@@ -137,6 +135,7 @@
                     android:hint="Password"
                     android:textColor="@color/dark_green"
                     android:textSize="16sp"
+
                     android:layout_marginBottom="20sp"
                     android:imeOptions="actionGo"
                     android:cursorVisible="true"
@@ -164,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColor"
                     android:text="I Agree To The "/>
 
                 <TextView

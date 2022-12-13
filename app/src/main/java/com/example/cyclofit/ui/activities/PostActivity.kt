@@ -13,6 +13,7 @@ import com.example.cyclofit.model.Post
 import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.utils.Constants
 import com.google.android.material.internal.ContextUtils.getActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : BaseActivity() {
@@ -25,7 +26,7 @@ class PostActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
-
+        mPostImage = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         supportActionBar?.hide()
 
         filter = intent.getStringExtra(Constants.PUT_EXTRA).toString()

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import com.airbnb.lottie.LottieAnimationView
 import com.example.cyclofit.R
 import com.androchef.happytimer.countdowntimer.CircularCountDownView
 import com.androchef.happytimer.countdowntimer.HappyTimer
