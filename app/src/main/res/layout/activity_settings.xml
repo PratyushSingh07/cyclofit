@@ -101,7 +101,7 @@
                     android:text="Choose Your App Theme" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeThemeBtn"
+                    android:id="@+id/changeThemeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

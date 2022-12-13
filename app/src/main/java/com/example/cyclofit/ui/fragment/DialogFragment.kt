@@ -36,6 +36,7 @@ class DialogFragment:androidx.fragment.app.DialogFragment() {
         sharedPreferences = requireContext().getSharedPreferences("NightMode",0)
         nightMode = sharedPreferences.getBoolean("night",false)
 
+
         rootView.confirm_button.setOnClickListener {
             val selectedId = ThemeChooserRadioBtn.checkedRadioButtonId
             val radio = rootView.findViewById<RadioButton>(selectedId)
@@ -53,14 +54,22 @@ class DialogFragment:androidx.fragment.app.DialogFragment() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             editor = sharedPreferences.edit()
             editor.putBoolean("night",false)
+            editor.putBoolean("followSystem",false)
         }
         else if(finalTheme == R.id.dark.toString()){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             editor = sharedPreferences.edit()
-
             editor.putBoolean("night",true)
-        }else{
-            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+            editor.putBoolean("followSystem",false)
+        }
+        else{
+            sharedPreferences = requireContext().getSharedPreferences("NightMode",0)
+            nightMode = sharedPreferences.getBoolean("followSystem",false)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            editor = sharedPreferences.edit()
+            editor.putBoolean("followSystem",true)
+
+
 
         }
         editor.apply()

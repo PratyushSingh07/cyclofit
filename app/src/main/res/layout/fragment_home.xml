@@ -350,8 +350,8 @@
                                 <com.airbnb.lottie.LottieAnimationView
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
-
-                                    app:lottie_fileName="cycle.json"
+                                    app:lottie_rawRes="@raw/cycle"
+                                    app:lottie_fileName="cal.json"
                                     app:lottie_autoPlay="true"
                                     app:lottie_loop="true"
 
@@ -424,9 +424,10 @@
                                 >
 
                                 <com.airbnb.lottie.LottieAnimationView
+                                    android:id="@+id/calLottie"
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
-                                    app:lottie_fileName="cycle.json"
+                                    app:lottie_rawRes="@raw/cal"
                                     app:lottie_autoPlay="true"
                                     app:lottie_loop="true"/>
 

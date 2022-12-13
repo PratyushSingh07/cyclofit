@@ -33,7 +33,6 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-
         //checkDarkMode
         checkDarkMode()
         val linear = findViewById<LinearLayout>(R.id.background_splash_screen)
@@ -62,8 +61,11 @@ class SplashScreen : AppCompatActivity() {
     fun checkDarkMode(){
         mSharedPreferences = getSharedPreferences("NightMode", 0)
         val mThemeAppState = mSharedPreferences.all["night"]
-
-        if(mThemeAppState== true){
+        val followSystem  = mSharedPreferences.all["followSystem"]
+        if (followSystem == true){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+        else if(mThemeAppState== true){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

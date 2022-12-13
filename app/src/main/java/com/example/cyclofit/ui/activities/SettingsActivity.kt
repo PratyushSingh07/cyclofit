@@ -36,11 +36,11 @@ class SettingsActivity :AppCompatActivity(){
         dialogFragment = DialogFragment()
 
 
-        selectThemeBtn = findViewById(R.id.changeThemeBtn)
+        selectThemeBtn = findViewById(R.id.changeThemeButton)
         changeAppTheme()
-        //getTheDarkMode
-        sharedPreferences = getSharedPreferences("NightMode",0)
-        nightMode = sharedPreferences.getBoolean("night",false)
+//        //getTheDarkMode
+//        sharedPreferences = getSharedPreferences("NightMode",0)
+//        nightMode = sharedPreferences.getBoolean("isNewUser",false)
 //        getDarkMode(nightMode)
 
         val btn = findViewById<Button>(R.id.logoutButton)
@@ -66,6 +66,8 @@ class SettingsActivity :AppCompatActivity(){
     private fun changeAppTheme(){
         selectThemeBtn.setOnClickListener {
             dialogFragment.show(supportFragmentManager,"customDialog")
+//            editor = sharedPreferences.edit()
+//            editor.putBoolean("isNewUser",false)
         }
     }
 

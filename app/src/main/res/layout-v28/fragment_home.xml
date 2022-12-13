@@ -48,6 +48,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="25sp"
+                                android:layout_margin="5dp"
                                 android:layout_gravity="center"
                                 android:textColor="@color/black"
                                 android:text="0"/>
@@ -348,8 +349,7 @@
                                 <com.airbnb.lottie.LottieAnimationView
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
-
-                                    app:lottie_fileName="cycle.json"
+                                    app:lottie_rawRes="@raw/cycle"
                                     app:lottie_autoPlay="true"
                                     app:lottie_loop="true"
 
@@ -424,7 +424,7 @@
                                 <com.airbnb.lottie.LottieAnimationView
                                     android:layout_width="match_parent"
                                     android:layout_height="100sp"
-                                    app:lottie_fileName="cycle.json"
+                                    app:lottie_rawRes="@raw/cal"
                                     app:lottie_autoPlay="true"
                                     app:lottie_loop="true"/>
 
