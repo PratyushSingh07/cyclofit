@@ -15,6 +15,7 @@
     <color name="backgroundColor">#FFFFFF</color>
     <color name="colorSnackBarError">#F72400</color>
     <color name="colorSnackBarSuccess">#8BC34A</color>
+    <color name="DefaultSnackBarColor">#FFFFFF</color>
     <color name="linkColor">#92b2fd</color>
     <color name="textInputOutlineColor">#fff</color>
 

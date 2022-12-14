@@ -1,22 +1,32 @@
 package com.example.cyclofit.ui.fragment
 
+import android.content.ClipData.Item
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentLeaderboardBinding
 import com.example.cyclofit.model.User
+import com.example.cyclofit.ui.adapter.FilteredLeaderBoardAdapter
 import com.example.cyclofit.ui.adapter.LeaderboardAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
+import com.google.android.material.snackbar.Snackbar
+import java.util.*
+import kotlin.collections.ArrayList
 
 class LeaderboardFragment : BaseFragment() {
 
     private lateinit var list : ArrayList<User>
     private lateinit var binding: FragmentLeaderboardBinding
-
+    private lateinit var filteredLeaderBoardList:ArrayList<User>
+    private lateinit var leaderBoardUserList:ArrayList<User>
+    private lateinit var adapter: LeaderboardAdapter
     companion object{
         var list=ArrayList<User>()
     }
@@ -24,11 +34,25 @@ class LeaderboardFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding=FragmentLeaderboardBinding.inflate(inflater,container,false)
         binding.toolbarDashboard.inflateMenu(R.menu.leaderboard_top)
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
 
+        //LeaderBoardSearchFunctionality
+        binding.searchBox.clearFocus()
+        binding.searchBox.setOnQueryTextListener(object:OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                return false
+
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterLeaderBoardList(newText)
+                return true
+            }
+
+        })
 
          list=ArrayList<User>()
         list.add(User("1","Pratyush","aries.@gmail.com","8.4"))
@@ -47,12 +71,31 @@ class LeaderboardFragment : BaseFragment() {
         return binding.root
     }
 
+    private fun filterLeaderBoardList(newText: String?) {
+        filteredLeaderBoardList = ArrayList<User>()
+        for(item in leaderBoardUserList){
+            if(item.name.lowercase().contains(newText!!.lowercase()))
+            {
+                filteredLeaderBoardList.add(item)
+            }
+        }
+        if(filteredLeaderBoardList.isEmpty()){
+            showErrorSnackBar("No User Found",true)
+        }else{
+            binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),filteredLeaderBoardList)
+        }
+    }
+
     fun getLeaderBoard(userList: ArrayList<User>) {
 
         hideProgressDialog()
 
         binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),userList)
         binding.rvLeaderboard.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+    }
+    fun getUserList(userList:ArrayList<User>){
+        leaderBoardUserList = kotlin.collections.ArrayList<User>()
+        leaderBoardUserList = userList
     }
 
     override fun onResume() {

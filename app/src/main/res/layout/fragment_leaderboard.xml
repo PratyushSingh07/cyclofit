@@ -39,22 +39,21 @@
 
                 </com.google.android.material.appbar.MaterialToolbar>
             </com.google.android.material.appbar.AppBarLayout>
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchBox"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvSearch"
                 android:drawableStart="@drawable/ic_baseline_search_24"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:hint="   Search The Leaderboard"
-                android:padding="15dp"
-                android:textColorHint="#28282B"
-                android:textSize="15sp" />
+                android:backgroundTint="@color/backgroundColor"
+                app:queryHint="Search The LeaderBoard..."
+                android:background="@drawable/background_line"
+                app:iconifiedByDefault="false"
+                android:textSize="10sp" />
         </LinearLayout>
         <ImageView
             android:layout_width="60dp"

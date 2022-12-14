@@ -7,8 +7,8 @@ import com.example.cyclofit.databinding.ItemLeaderboardBinding
 import android.content.Context
 import com.example.cyclofit.model.User
 
-class LeaderboardAdapter(val context: Context, private var list: ArrayList<User>) :
-    RecyclerView.Adapter<LeaderboardAdapter.LeaderViewHolder>() {
+class FilteredLeaderBoardAdapter(val context: Context, private var list: ArrayList<User>) :
+    RecyclerView.Adapter<FilteredLeaderBoardAdapter.LeaderViewHolder>() {
     inner class LeaderViewHolder(val binding: ItemLeaderboardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
