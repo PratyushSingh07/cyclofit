@@ -503,6 +503,7 @@ class FirestoreClass {
                     is LeaderboardFragment -> {
                         fragment.getLeaderBoard(userList)
                         fragment.getUserList(userList)
+
                     }
                 }
             }

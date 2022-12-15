@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cyclofit.databinding.ItemLeaderboardBinding
 import android.content.Context
+import android.util.Log
 import com.example.cyclofit.model.User
 
 class LeaderboardAdapter(val context: Context, private var list: ArrayList<User>) :
@@ -24,7 +25,8 @@ class LeaderboardAdapter(val context: Context, private var list: ArrayList<User>
 
     override fun onBindViewHolder(holder: LeaderViewHolder, position: Int) {
         val model = list[position]
-        holder.binding.positionOfUser.text = (position+1).toString()
+        Log.d("listelements","$model")
+        holder.binding.positionOfUser.text = (position+1).toString()+" . "
         holder.binding.nameOfUser.text = model.name
         holder.binding.emailOfUser.text = model.email
         holder.binding.distanceCovered.text = model.distance
