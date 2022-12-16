@@ -103,8 +103,8 @@ class LeaderboardFragment : BaseFragment() {
     }
 
     private fun getTopUser(userList: ArrayList<User>) {
-        binding.nameOfUser.text = userList.first().name
-        binding.emailOfUser.text = userList.first().email
-        binding.distanceCovered.text = userList.first().distance+" km"
+        binding.nameOfUser.text = leaderBoardUserList.first().name
+        binding.emailOfUser.text = leaderBoardUserList.first().email
+        binding.distanceCovered.text = leaderBoardUserList.first().distance+" km"
     }
 }
