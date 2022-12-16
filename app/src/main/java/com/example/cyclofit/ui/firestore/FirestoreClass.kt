@@ -502,6 +502,8 @@ class FirestoreClass {
                 when (fragment) {
                     is LeaderboardFragment -> {
                         fragment.getLeaderBoard(userList)
+                        fragment.getUserList(userList)
+
                     }
                 }
             }

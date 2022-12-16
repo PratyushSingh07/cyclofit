@@ -39,22 +39,22 @@
 
                 </com.google.android.material.appbar.MaterialToolbar>
             </com.google.android.material.appbar.AppBarLayout>
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchBox"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvSearch"
                 android:drawableStart="@drawable/ic_baseline_search_24"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:hint="   Search The Leaderboard"
-                android:padding="15dp"
-                android:textColorHint="#28282B"
-                android:textSize="15sp" />
+                android:backgroundTint="@color/backgroundColor"
+                app:queryHint="Search The LeaderBoard..."
+                android:background="@drawable/background_line"
+                app:iconifiedByDefault="false"
+                android:textSize="10sp"
+                />
         </LinearLayout>
         <ImageView
             android:layout_width="60dp"
@@ -88,15 +88,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentStart="true"
+                    >
 
-                    <TextView
-                        android:id="@+id/positionOfUser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1."
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/nameOfUser"
@@ -105,6 +101,14 @@
                         android:text="Aditya Gupta"
                         android:textSize="20sp"
                         android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/distanceCovered"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="0.0km "
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <TextView
@@ -116,16 +120,7 @@
                     android:text="ashishgupta9936@gmail.com"
                     android:textSize="17sp" />
 
-                <TextView
-                    android:id="@+id/distanceCovered"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="20dp"
-                    android:gravity="end"
-                    android:text="0.0km"
-                    android:textSize="20sp" />
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <LinearLayout
