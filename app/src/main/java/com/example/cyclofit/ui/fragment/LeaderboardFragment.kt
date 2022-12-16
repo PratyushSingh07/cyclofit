@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentLeaderboardBinding
 import com.example.cyclofit.model.User
-import com.example.cyclofit.ui.adapter.FilteredLeaderBoardAdapter
 import com.example.cyclofit.ui.adapter.LeaderboardAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
-import kotlinx.android.synthetic.main.fragment_leaderboard.view.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class LeaderboardFragment : BaseFragment() {
@@ -22,7 +19,8 @@ class LeaderboardFragment : BaseFragment() {
     private lateinit var list : ArrayList<User>
     private lateinit var binding: FragmentLeaderboardBinding
     private lateinit var filteredLeaderBoardList:ArrayList<User>
-    private lateinit var leaderBoardUserList:ArrayList<User>
+    private lateinit var leaderBoardUserList:kotlin.collections.List<User>
+
     companion object{
         var list=ArrayList<User>()
     }
@@ -81,16 +79,20 @@ class LeaderboardFragment : BaseFragment() {
         }
     }
 
-    fun getLeaderBoard(userList: ArrayList<User>) {
-        userList.sortByDescending { it.distance.toDouble() }
+    fun getLeaderBoard(userList: kotlin.collections.ArrayList<User>) {
+
+        leaderBoardUserList = userList.sortedByDescending {
+            it.distance.toDouble() }.mapIndexed { index, item -> item.copy(rank = index + 1) }
+
+
+        Log.d("sorteddata","$leaderBoardUserList")
         hideProgressDialog()
-        binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),userList)
+        binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),leaderBoardUserList)
         binding.rvLeaderboard.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
     }
     fun getUserList(userList:ArrayList<User>){
 
         //filter list issue pratyush singh is at bottom with 7.9km should at pos 2
-        leaderBoardUserList = userList
         getTopUser(userList)
     }
 
