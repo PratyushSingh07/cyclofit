@@ -2,39 +2,43 @@ package com.example.cyclofit.ui.fragment
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Button
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.view.MenuProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentLeaderboardBinding
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.adapter.LeaderboardAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
-import kotlin.collections.ArrayList
+import com.example.cyclofit.ui.utils.Tools
 
 class LeaderboardFragment : BaseFragment() {
 
-    private lateinit var list : ArrayList<User>
+    private lateinit var list: ArrayList<User>
     private lateinit var binding: FragmentLeaderboardBinding
-    private lateinit var filteredLeaderBoardList:ArrayList<User>
-    private lateinit var leaderBoardUserList:kotlin.collections.List<User>
+    private lateinit var filteredLeaderBoardList: ArrayList<User>
 
-    companion object{
-        var list=ArrayList<User>()
+    //    private lateinit var leaderBoardUserList:kotlin.collections.List<User>
+    private lateinit var leaderBoardUserList: ArrayList<User>
+    private lateinit var firestoreClass: FirestoreClass
+
+    companion object {
+        var list = ArrayList<User>()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding=FragmentLeaderboardBinding.inflate(inflater,container,false)
+        binding = FragmentLeaderboardBinding.inflate(inflater, container, false)
         binding.toolbarDashboard.inflateMenu(R.menu.leaderboard_top)
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)
         leaderBoardUserList = kotlin.collections.ArrayList<User>()
         //LeaderBoardSearchFunctionality
         binding.searchBox.clearFocus()
-        binding.searchBox.setOnQueryTextListener(object:OnQueryTextListener{
+        binding.searchBox.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
                 return false
@@ -47,6 +51,10 @@ class LeaderboardFragment : BaseFragment() {
             }
 
         })
+
+        firestoreClass = FirestoreClass()
+
+        inflateMenuItem()
 
 //         list=ArrayList<User>()
 //        list.add(User("1","Pratyush","aries.@gmail.com","8.4"))
@@ -66,31 +74,37 @@ class LeaderboardFragment : BaseFragment() {
 
     private fun filterLeaderBoardList(newText: String?) {
         filteredLeaderBoardList = ArrayList<User>()
-        for(item in leaderBoardUserList){
-            if(item.name.lowercase().contains(newText!!.lowercase()))
-            {
+        for (item in leaderBoardUserList) {
+            if (item.name.lowercase().contains(newText!!.lowercase())) {
                 filteredLeaderBoardList.add(item)
             }
         }
-        if(filteredLeaderBoardList.isEmpty()){
-            showErrorSnackBar("No User Found",true)
-        }else{
-            binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),filteredLeaderBoardList)
+        if (filteredLeaderBoardList.isEmpty()) {
+            showErrorSnackBar("No User Found", true)
+        } else {
+            binding.rvLeaderboard.adapter =
+                LeaderboardAdapter(requireContext(), filteredLeaderBoardList)
         }
     }
 
     fun getLeaderBoard(userList: kotlin.collections.ArrayList<User>) {
 
-        leaderBoardUserList = userList.sortedByDescending {
-            it.distance.toDouble() }.mapIndexed { index, item -> item.copy(rank = index + 1) }
+//        leaderBoardUserList = userList.sortedByDescending {
+//            it.distance.toDouble() }.mapIndexed { index, item -> item.copy(rank = index + 1) }
 
+        leaderBoardUserList = Tools.convertListToArrayList(
+            userList.sortedByDescending { it.distance.toDouble() }
+                .mapIndexed { index, item -> item.copy(rank = index + 1) }
+        )
 
-        Log.d("sorteddata","$leaderBoardUserList")
+        Log.d("sorteddata", "$leaderBoardUserList")
         hideProgressDialog()
-        binding.rvLeaderboard.adapter=LeaderboardAdapter(requireContext(),leaderBoardUserList)
-        binding.rvLeaderboard.layoutManager=LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        binding.rvLeaderboard.adapter = LeaderboardAdapter(requireContext(), leaderBoardUserList)
+        binding.rvLeaderboard.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     }
-    fun getUserList(userList:ArrayList<User>){
+
+    fun getUserList(userList: ArrayList<User>) {
 
         //filter list issue pratyush singh is at bottom with 7.9km should at pos 2
         getTopUser(userList)
@@ -99,12 +113,91 @@ class LeaderboardFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         showProgressDialog()
-        FirestoreClass().getLeaderboardFragment(this)
+//        FirestoreClass().getLeaderboardFragment(this)
+        firestoreClass.getLeaderboardFragment(this)
     }
 
     private fun getTopUser(userList: ArrayList<User>) {
         binding.nameOfUser.text = leaderBoardUserList.first().name
         binding.emailOfUser.text = leaderBoardUserList.first().email
-        binding.distanceCovered.text = leaderBoardUserList.first().distance+" km"
+        binding.distanceCovered.text = leaderBoardUserList.first().distance + " km"
     }
+
+    private fun inflateMenuItem() {
+        // use menu provider api to implement menu
+        binding.toolbarDashboard.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Inflate the menu into the toolbar
+                // menuInflater.inflate(R.menu.leaderboard_top, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.refresh -> {
+                        // refresh leaderboard. this rearrange board to the default way
+                        showProgressDialog()
+                        firestoreClass.leaderBoardManager { userList ->
+                            getLeaderBoard(userList)
+                            hideProgressDialog()
+                        }
+                        true
+                    }
+                    R.id.sort -> {
+                        // popup window so that user can choose how to sort leader board
+                        Tools.popUpWindow(
+                            context = requireContext(),
+                            fragmentView = binding.root,
+                            layout = R.layout.sort_popup_layout,
+                            gravity = Gravity.CENTER
+                        ) { view, popupWindow ->
+                            view.findViewById<Button>(R.id.id_btn_sort_by_name)
+                                .setOnClickListener {
+                                    // when the sort by name button is clicked
+                                    showProgressDialog()
+                                    sortByNameClicked()
+                                    popupWindow.dismiss()
+                                }
+                            view.findViewById<Button>(R.id.id_btn_sort_by_distance)
+                                .setOnClickListener {
+                                    // when the sort by distance button is clicked
+                                    showProgressDialog()
+                                    sortByDistanceClicked()
+                                    popupWindow.dismiss()
+                                }
+                        }
+                        true
+                    }
+                    else -> false
+                }
+            }
+        })
+    }
+
+    private fun sortByNameClicked() {
+        // rearrange the board alphabetically (A-Z)
+        // and then notify the adapter of data changed
+        firestoreClass.leaderBoardManager { userList ->
+            leaderBoardUserList.clear()
+            userList.sortedBy { it.name.lowercase() }.forEach {
+                leaderBoardUserList.add(it)
+            }
+            hideProgressDialog()
+            binding.rvLeaderboard.adapter?.notifyDataSetChanged()
+
+        }
+    }
+
+    private fun sortByDistanceClicked() {
+        // rearrange the board by distance (highest to lowest)
+        // and then notify the adapter of data changed
+        firestoreClass.leaderBoardManager { userList ->
+            leaderBoardUserList.clear()
+            userList.sortedByDescending { it.distance.toDouble() }.forEach {
+                leaderBoardUserList.add(it)
+            }
+            hideProgressDialog()
+            binding.rvLeaderboard.adapter?.notifyDataSetChanged()
+        }
+    }
+
 }
