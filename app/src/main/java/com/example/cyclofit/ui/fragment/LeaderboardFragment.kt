@@ -137,7 +137,7 @@ class LeaderboardFragment : BaseFragment() {
                 return when (menuItem.itemId) {
                     R.id.refresh -> {
                         showProgressDialog()
-                        firestoreClass.leaderBoarManager { userList ->
+                        firestoreClass.leaderBoardManager { userList ->
                             getLeaderBoard(userList)
                             hideProgressDialog()
                         }
@@ -172,7 +172,7 @@ class LeaderboardFragment : BaseFragment() {
     }
 
     private fun sortByNameClicked() {
-        firestoreClass.leaderBoarManager { userList ->
+        firestoreClass.leaderBoardManager { userList ->
             leaderBoardUserList.clear()
             userList.sortedBy { it.name.lowercase() }.forEach {
                 leaderBoardUserList.add(it)
@@ -184,7 +184,7 @@ class LeaderboardFragment : BaseFragment() {
     }
 
     private fun sortByDistanceClicked() {
-        firestoreClass.leaderBoarManager { userList ->
+        firestoreClass.leaderBoardManager { userList ->
             leaderBoardUserList.clear()
             userList.sortedByDescending { it.distance.toDouble() }.forEach {
                 leaderBoardUserList.add(it)

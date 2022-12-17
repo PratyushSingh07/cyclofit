@@ -513,7 +513,7 @@ class FirestoreClass {
             }
     }
 
-    fun leaderBoarManager(lambda:(ArrayList<User>)->Unit){
+    fun leaderBoardManager(lambda:(ArrayList<User>)->Unit){
         mFirestore.collection(Constants.USERS)
             .get()
             .addOnSuccessListener { document ->
