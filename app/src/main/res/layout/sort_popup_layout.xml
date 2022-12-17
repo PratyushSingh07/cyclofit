@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/colorGrey"
+        android:orientation="vertical"
+        android:padding="3dp">
+
+        <Button
+            android:id="@+id/id_btn_sort_by_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="sort by name"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/id_btn_sort_by_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:text="sort by distance"
+            android:textAllCaps="false" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>
