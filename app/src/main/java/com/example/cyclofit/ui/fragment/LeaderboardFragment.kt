@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Button
-import android.widget.PopupMenu
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.view.MenuProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +13,6 @@ import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.adapter.LeaderboardAdapter
 import com.example.cyclofit.ui.firestore.FirestoreClass
 import com.example.cyclofit.ui.utils.Tools
-import kotlin.collections.ArrayList
 
 class LeaderboardFragment : BaseFragment() {
 
@@ -136,6 +134,7 @@ class LeaderboardFragment : BaseFragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.refresh -> {
+                        // refresh leaderboard. this rearrange board to the default way
                         showProgressDialog()
                         firestoreClass.leaderBoardManager { userList ->
                             getLeaderBoard(userList)
@@ -144,6 +143,7 @@ class LeaderboardFragment : BaseFragment() {
                         true
                     }
                     R.id.sort -> {
+                        // popup window so that user can choose how to sort leader board
                         Tools.popUpWindow(
                             context = requireContext(),
                             fragmentView = binding.root,
@@ -152,12 +152,14 @@ class LeaderboardFragment : BaseFragment() {
                         ) { view, popupWindow ->
                             view.findViewById<Button>(R.id.id_btn_sort_by_name)
                                 .setOnClickListener {
-                                showProgressDialog()
-                                sortByNameClicked()
-                                popupWindow.dismiss()
-                            }
+                                    // when the sort by name button is clicked
+                                    showProgressDialog()
+                                    sortByNameClicked()
+                                    popupWindow.dismiss()
+                                }
                             view.findViewById<Button>(R.id.id_btn_sort_by_distance)
                                 .setOnClickListener {
+                                    // when the sort by distance button is clicked
                                     showProgressDialog()
                                     sortByDistanceClicked()
                                     popupWindow.dismiss()
@@ -172,6 +174,8 @@ class LeaderboardFragment : BaseFragment() {
     }
 
     private fun sortByNameClicked() {
+        // rearrange the board alphabetically (A-Z)
+        // and then notify the adapter of data changed
         firestoreClass.leaderBoardManager { userList ->
             leaderBoardUserList.clear()
             userList.sortedBy { it.name.lowercase() }.forEach {
@@ -184,6 +188,8 @@ class LeaderboardFragment : BaseFragment() {
     }
 
     private fun sortByDistanceClicked() {
+        // rearrange the board by distance (highest to lowest)
+        // and then notify the adapter of data changed
         firestoreClass.leaderBoardManager { userList ->
             leaderBoardUserList.clear()
             userList.sortedByDescending { it.distance.toDouble() }.forEach {

@@ -67,15 +67,15 @@ class FirestoreClass {
     }
 
 
-    fun getUserDetails(fragment: Fragment){
+    fun getUserDetails(fragment: Fragment) {
 
         //Here we pass the collection name from which we wants the data.
         mFirestore.collection(Constants.USERS)
             // the document id to get the field of User.
             .document(getCurrentUserId())
             .get()
-            .addOnSuccessListener { document->
-                Log.i(fragment.javaClass.simpleName,document.toString())
+            .addOnSuccessListener { document ->
+                Log.i(fragment.javaClass.simpleName, document.toString())
 
                 //Here we have received the document snapshot which is converted into the User data model object.
                 val user = document.toObject(User::class.java)!!
@@ -86,7 +86,7 @@ class FirestoreClass {
                     Context.MODE_PRIVATE
                 )
 
-                val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString(Constants.LOGGED_IN_USERNAME, user.name)
                 editor.apply()
 
@@ -101,20 +101,19 @@ class FirestoreClass {
 //                editor.apply()
 //                //end
 
-                when(fragment){
-                    is SignInFragment ->
-                    {
+                when (fragment) {
+                    is SignInFragment -> {
                         //call a function of base activity for transferring the result to it
                         fragment.userLoggedInSuccess(user)
                     }
-                    is HomeFragment ->{
+                    is HomeFragment -> {
                         fragment.userDetailsSuccess(user)
                     }
                 }
             }
     }
 
-    fun registerUserRealTime(fragment: SignUpFragment,userInfo: User){
+    fun registerUserRealTime(fragment: SignUpFragment, userInfo: User) {
 
         FirebaseDatabase.getInstance().getReference(Constants.USERS)
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
@@ -122,7 +121,7 @@ class FirestoreClass {
             .addOnSuccessListener {
 
             }
-            .addOnFailureListener {e->
+            .addOnFailureListener { e ->
                 fragment.hideProgressDialog()
                 Log.e(
                     "Maa Baap ka pyaar check",
@@ -161,14 +160,14 @@ class FirestoreClass {
 //
 //    }
 
-    fun createCommunity(activity: CreateCommunityActivity, community : String){
+    fun createCommunity(activity: CreateCommunityActivity, community: String) {
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
             .child(community)
             .setValue(community)
             .addOnSuccessListener {
                 activity.createCommunitySuccess()
             }
-            .addOnFailureListener { e->
+            .addOnFailureListener { e ->
                 activity.hideProgressDialog()
                 Log.e(
                     "Maa Baap ka pyaar check",
@@ -178,7 +177,7 @@ class FirestoreClass {
             }
     }
 
-    fun createPost(activity: PostActivity,community: String,postList : ArrayList<Post>){
+    fun createPost(activity: PostActivity, community: String, postList: ArrayList<Post>) {
 
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
             .child(community)
@@ -186,7 +185,7 @@ class FirestoreClass {
             .addOnSuccessListener {
                 activity.createPostSuccess()
             }
-            .addOnFailureListener { e->
+            .addOnFailureListener { e ->
                 activity.hideProgressDialog()
                 Log.e(
                     "Maa Baap ka pyaar check",
@@ -196,26 +195,30 @@ class FirestoreClass {
             }
     }
 
-    fun getCommunityList(fragment: CommunityFragment){
+    fun getCommunityList(fragment: CommunityFragment) {
 
         val list = ArrayList<String>()
 
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY)
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
+                    if (snapshot.exists()) {
 
                         for (data in snapshot.children) {
                             val key = data.key
                             list.add(key.toString())
                         }
                         list.shuffle()
-                    }
-                    else{
-                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(
+                            fragment.requireContext(),
+                            "Something went wrong",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     fragment.getCommunityListSuccess(list)
                 }
+
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
@@ -223,14 +226,14 @@ class FirestoreClass {
 
     }
 
-    fun getAllPost(fragment: CommunityFragment,current : String){
+    fun getAllPost(fragment: CommunityFragment, current: String) {
 
         val list = ArrayList<Post>()
 
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child(current)
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
+                    if (snapshot.exists()) {
 
                         for (data in snapshot.children) {
                             val value = data.getValue(Post::class.java)
@@ -239,12 +242,16 @@ class FirestoreClass {
                         }
 
                         list.shuffle()
-                    }
-                    else{
-                        Toast.makeText(fragment.requireContext(),"Something went wrong",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(
+                            fragment.requireContext(),
+                            "Something went wrong",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     fragment.getAllPostSuccess(list)
                 }
+
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
@@ -281,7 +288,7 @@ class FirestoreClass {
                             is PostActivity -> {
                                 activity.imageUploadSuccess(uri.toString())
                             }
-                            is ProfileActivity ->{
+                            is ProfileActivity -> {
                                 activity.imageUploadSuccess(uri.toString())
                             }
                         }
@@ -329,15 +336,15 @@ class FirestoreClass {
             }
     }
 
-    fun getUserDetails(activity: Activity){
+    fun getUserDetails(activity: Activity) {
 
         //Here we pass the collection name from which we wants the data.
         mFirestore.collection(Constants.USERS)
             // the document id to get the field of User.
             .document(getCurrentUserId())
             .get()
-            .addOnSuccessListener { document->
-                Log.i(activity.javaClass.simpleName,document.toString())
+            .addOnSuccessListener { document ->
+                Log.i(activity.javaClass.simpleName, document.toString())
 
                 //Here we have received the document snapshot which is converted into the User data model object.
                 val user = document.toObject(User::class.java)!!
@@ -348,7 +355,7 @@ class FirestoreClass {
                     Context.MODE_PRIVATE
                 )
 
-                val editor : SharedPreferences.Editor = sharedPreferences.edit()
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString(Constants.LOGGED_IN_USERNAME, user.name)
                 editor.apply()
 
@@ -363,27 +370,26 @@ class FirestoreClass {
 //                editor.apply()
 //                //end
 
-                when(activity){
-                    is ProfileActivity ->
-                    {
+                when (activity) {
+                    is ProfileActivity -> {
                         //call a function of base activity for transferring the result to it
                         activity.userLoggedInSuccess(user)
                     }
-                    is SettingsActivity->{
+                    is SettingsActivity -> {
                         activity.userDetailsSuccess(user)
                     }
                 }
             }
     }
 
-    fun getAllPost(activity: PostActivity,current: String){
+    fun getAllPost(activity: PostActivity, current: String) {
 
         val list = ArrayList<Post>()
 
         FirebaseDatabase.getInstance().getReference(Constants.COMMUNITY).child(current)
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
+                    if (snapshot.exists()) {
 
                         for (data in snapshot.children) {
                             val value = data.getValue(Post::class.java)
@@ -392,12 +398,12 @@ class FirestoreClass {
                         }
 
                         list.shuffle()
-                    }
-                    else{
-                        Toast.makeText(activity,"Something went wrong",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show()
                     }
                     activity.getAllPostSuccess(list)
                 }
+
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
@@ -413,7 +419,7 @@ class FirestoreClass {
                 fragment.postFilter(model)
 
             }
-            .addOnFailureListener { e->
+            .addOnFailureListener { e ->
 //                activity.hideProgressDialog()
                 Log.e(
                     "Maa Baap ka pyaar check",
@@ -513,7 +519,9 @@ class FirestoreClass {
             }
     }
 
-    fun leaderBoardManager(lambda:(ArrayList<User>)->Unit){
+    fun leaderBoardManager(lambda: (ArrayList<User>) -> Unit) {
+        // this function when been called,
+        // allows you to use the user list board
         mFirestore.collection(Constants.USERS)
             .get()
             .addOnSuccessListener { document ->

@@ -8,18 +8,17 @@ import android.transition.Slide
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.PopupMenu
 import android.widget.PopupWindow
-import com.example.cyclofit.R
 
 object Tools {
+    // This is a function that print a log report to help debug your code
     fun debugMessage(message: String, tag: String = "DEBUG-MESSAGE") {
         Log.e(tag, message)
     }
 
+    // This function should help you easily implement pop up window
     fun popUpWindow(
         context: Context,
         fragmentView: View,
@@ -53,6 +52,8 @@ object Tools {
     }
 
     fun <T> convertListToArrayList(list: List<T>): ArrayList<T> {
+        // convert List to ArrayList.
+        // converting List to ArrayList id not available in kotlin
         val arrayList = ArrayList<T>()
         kotlin.run {
             for (l in list) {
