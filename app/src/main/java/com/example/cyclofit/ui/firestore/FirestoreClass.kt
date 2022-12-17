@@ -15,6 +15,7 @@ import com.example.cyclofit.ui.activities.ProfileActivity
 import com.example.cyclofit.ui.activities.SettingsActivity
 import com.example.cyclofit.ui.fragment.*
 import com.example.cyclofit.ui.utils.Constants
+import com.example.cyclofit.ui.utils.Tools
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -507,6 +508,24 @@ class FirestoreClass {
             }
             .addOnFailureListener {
 
+            }
+    }
+
+    fun leaderBoarManager(lambda:(ArrayList<User>)->Unit){
+        mFirestore.collection(Constants.USERS)
+            .get()
+            .addOnSuccessListener { document ->
+
+                val userList: ArrayList<User> = ArrayList()
+
+                for (i in document.documents) {
+                    val user = i.toObject(User::class.java)
+                    userList.add(user!!)
+                }
+                lambda(userList)
+            }
+            .addOnFailureListener {
+                Tools.debugMessage(it.message.toString(), it.cause.toString())
             }
     }
 }
