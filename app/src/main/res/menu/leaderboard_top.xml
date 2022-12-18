@@ -3,5 +3,14 @@
     <item  android:id="@+id/refresh"
         android:title="Refresh"/>
     <item android:id="@+id/sort"
-        android:title="Sort"/>
+        android:title="Sort">
+        <menu>
+            <item
+                android:id="@+id/id_menu_name"
+                android:title="@string/by_name"/>
+            <item
+                android:id="@+id/id_menu_distance"
+                android:title="@string/by_distance"/>
+        </menu>
+    </item>
 </menu>
