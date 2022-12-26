@@ -126,7 +126,7 @@ import java.util.concurrent.TimeUnit
          totalCal()
      }
 
-     fun totalCal(){
+     private fun totalCal(){
 
          val sharedPreferences = requireContext().getSharedPreferences(
              Constants.CYCLOFIT_PREFERENCES,

@@ -231,6 +231,12 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
 
     private fun validateUserProfileDetails():Boolean {
         return when{
+            TextUtils.isEmpty(et_name_profile.text.toString().trim{it <=' '})->
+            {
+                showErrorSnackBar("Enter your Name",true)
+                false
+            }
+
             TextUtils.isEmpty(et_phoneNo_profile.text.toString().trim{it <=' '})->
             {
                 showErrorSnackBar("Enter your mobile number",true)
@@ -241,6 +247,7 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
                 showErrorSnackBar("Enter Your Weight",true)
                 false
             }
+
             else->
             {
                 true
