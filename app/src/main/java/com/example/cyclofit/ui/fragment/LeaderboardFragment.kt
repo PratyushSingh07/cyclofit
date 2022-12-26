@@ -34,6 +34,7 @@ class LeaderboardFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentLeaderboardBinding.inflate(inflater, container, false)
         binding.toolbarDashboard.inflateMenu(R.menu.leaderboard_top)
         activity?.window!!.statusBarColor = requireActivity().getColor(R.color.dark_green)

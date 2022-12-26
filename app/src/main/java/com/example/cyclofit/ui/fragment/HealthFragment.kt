@@ -11,12 +11,15 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.cyclofit.`interface`.HeartApi
 import com.example.cyclofit.databinding.FragmentHealthBinding
 import com.example.cyclofit.model.Shared
+import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.GraphActivity
 import com.example.cyclofit.ui.adapter.ViewAdapter
 import com.example.cyclofit.ui.fragment.HomeFragment.Companion.timer
 import com.example.cyclofit.ui.utils.Constants
 import com.github.mikephil.charting.data.Entry
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
@@ -30,7 +33,7 @@ import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 
  class HealthFragment : BaseFragment() {
-
+     lateinit var mFireStore : FirebaseFirestore
      lateinit var binding: FragmentHealthBinding
      var tabTitle  = arrayOf("Kcal","Time","Distance")
      var sp = ArrayList<Shared>()
@@ -44,7 +47,7 @@ import java.util.concurrent.TimeUnit
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHealthBinding.inflate(inflater, container, false)
-
+        mFireStore = FirebaseFirestore.getInstance()
 
 
         val pager = binding.viewPager
@@ -135,18 +138,25 @@ import java.util.concurrent.TimeUnit
 
          if(json!=null) {
              sp = gson.fromJson(json, type)
+             mFireStore.collection(Constants.USERS)
+                 // the document id to get the field of User.
+                 .document(FirebaseAuth.getInstance().currentUser!!.uid)
+                 .get().addOnSuccessListener {
+                     val  userWeight = it.toObject(User::class.java)!!.weight
+                     var x: Float = 0F
+                     for (i in sp) {
+                         val y = i.time.toInt()
+                         val MET = 12 // for bicycles
+                         val wt = userWeight.toDouble() // in kg
+                         var totalCalsBurnt = 0.0;
+                         totalCalsBurnt = y * (MET * 3.5 * wt)
+                         totalCalsBurnt /= 200 * 1000;
+                         x += totalCalsBurnt.toFloat()
+                     }
+                     binding.valueOfKcalsBurnt.text = String.format("%.2f", x).toDouble().toString()
+                 }
 
-             var x: Float = 0F
-             for (i in sp) {
-                 var y = i.time.toInt()
-                 val MET = 12 // for bicycles
-                 val wt = 60 // in kg
-                 var totalCalsBurnt = 0.0;
-                 totalCalsBurnt = y * (MET * 3.5 * wt)
-                 totalCalsBurnt /= 200 * 1000;
-                 x += totalCalsBurnt.toFloat()
-             }
-             binding.valueOfKcalsBurnt.text = String.format("%.2f", x).toDouble().toString()
+
          }
      }
 
