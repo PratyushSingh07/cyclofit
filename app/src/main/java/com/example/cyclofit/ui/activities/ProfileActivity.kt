@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.example.cyclofit.R
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.firestore.FirestoreClass
@@ -47,7 +48,7 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
 
         title_profile.text = "Complete Profile"
         et_name_profile.isEnabled = true
-        iv_select_profile.setImageDrawable(resources.getDrawable(R.drawable.add_photo))
+        iv_select_profile.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.add_photo, null))
 
         user_image.setOnClickListener(this)
         btn_done.setOnClickListener (this)
@@ -230,6 +231,12 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
 
     private fun validateUserProfileDetails():Boolean {
         return when{
+            TextUtils.isEmpty(et_name_profile.text.toString().trim{it <=' '})->
+            {
+                showErrorSnackBar("Enter your Name",true)
+                false
+            }
+
             TextUtils.isEmpty(et_phoneNo_profile.text.toString().trim{it <=' '})->
             {
                 showErrorSnackBar("Enter your mobile number",true)
@@ -237,9 +244,10 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
             }
             TextUtils.isEmpty(et_weight_profile.text.toString().trim{it <=' '})->
             {
-                showErrorSnackBar("Enter your Current Class",true)
+                showErrorSnackBar("Enter Your Weight",true)
                 false
             }
+
             else->
             {
                 true
@@ -253,7 +261,7 @@ class ProfileActivity : BaseActivity() , View.OnClickListener {
 
         mUserProfileImageURl = imageUrl
 
-        println("Yes image upload successfully")
+        println("Image uploaded successfully")
 
         updateUserProfileDetails()
     }

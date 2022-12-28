@@ -53,7 +53,7 @@ class FirestoreClass {
             }
     }
 
-    private fun getCurrentUserId(): String {
+    fun getCurrentUserId(): String {
         //An Instance of currentUser using FirebaseAuth
         val currentUser = FirebaseAuth.getInstance().currentUser
 
