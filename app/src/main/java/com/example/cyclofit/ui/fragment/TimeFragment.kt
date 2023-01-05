@@ -85,7 +85,7 @@ class TimeFragment : Fragment() {
         binding.timeChart.description.isEnabled=true
 
         lineDataSet.setDrawFilled(true)
-        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.gradient_3)
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.gradient_health)
         lineDataSet.fillDrawable=drawable
 
         return binding.root
