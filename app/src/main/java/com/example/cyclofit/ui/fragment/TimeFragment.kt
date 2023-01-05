@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentTimeBinding
 import com.example.cyclofit.model.Shared
 import com.example.cyclofit.ui.fragment.HomeFragment.Companion.timeList
@@ -55,6 +57,37 @@ class TimeFragment : Fragment() {
         lineDataSet.valueTextColor= Color.BLACK
         lineDataSet.valueTextSize=16f
         binding.timeChart.description.isEnabled=true
+        lineDataSet.mode=LineDataSet.Mode.CUBIC_BEZIER
+        binding.timeChart.axisRight.apply {
+            setDrawGridLines(false)
+            setDrawLabels(false)
+            setDrawAxisLine(false)
+        }
+        binding.timeChart.axisLeft.apply {
+            setDrawGridLines(false)
+            setDrawLabels(false)
+            setDrawAxisLine(false)
+        }
+        binding.timeChart.xAxis.apply {
+            setDrawGridLines(false)
+            setDrawLabels(false)
+            setDrawAxisLine(false)
+        }
+        binding.timeChart.setDrawGridBackground(false)
+        binding.timeChart.setDrawBorders(false)
+
+        binding.timeChart.data=lineData
+        lineDataSet.setColor(resources.getColor(R.color.purple_200))
+
+        lineDataSet.setDrawFilled(true)
+        lineDataSet.valueTextColor= Color.BLACK
+        lineDataSet.valueTextSize=16f
+        binding.timeChart.description.isEnabled=true
+
+        lineDataSet.setDrawFilled(true)
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.gradient_3)
+        lineDataSet.fillDrawable=drawable
+
         return binding.root
     }
 }

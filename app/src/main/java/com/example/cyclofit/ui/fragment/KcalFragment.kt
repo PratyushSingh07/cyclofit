@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import com.example.cyclofit.R
@@ -65,10 +66,40 @@ class KcalFragment : Fragment() {
                 val axisLeft = binding.kcalChart.axisLeft.textColor
                 binding.kcalChart.axisLeft
                 lineDataSet.addColor(R.color.white)
+                lineDataSet.mode=LineDataSet.Mode.CUBIC_BEZIER
                 binding.kcalChart.description.isEnabled=true
                 binding.kcalChart.invalidate()
-            }
+                binding.kcalChart.axisRight.apply {
+                    setDrawGridLines(false)
+                    setDrawLabels(false)
+                    setDrawAxisLine(false)
+                }
+                binding.kcalChart.axisLeft.apply {
+                    setDrawGridLines(false)
+                    setDrawLabels(false)
+                    setDrawAxisLine(false)
+                }
+                binding.kcalChart.xAxis.apply {
+                    setDrawGridLines(false)
+                    setDrawLabels(false)
+                    setDrawAxisLine(false)
+                }
+                binding.kcalChart.setDrawGridBackground(false)
+                binding.kcalChart.setDrawBorders(false)
 
+                kcalChart.data=lineData
+                lineDataSet.setColor(resources.getColor(R.color.purple_200))
+
+                lineDataSet.setDrawFilled(true)
+                lineDataSet.valueTextColor= Color.BLACK
+                lineDataSet.valueTextSize=16f
+                kcalChart.description.isEnabled=true
+
+                lineDataSet.setDrawFilled(true)
+                val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.gradient_3)
+                lineDataSet.fillDrawable=drawable
+
+            }
 
         return binding.root
     }
