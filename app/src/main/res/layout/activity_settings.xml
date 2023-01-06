@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -71,55 +71,107 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_email">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/appthemetext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/colorTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="18dp"
-                    android:text="App Theme"
-                    android:textColor="@color/textColor"
-                    android:textSize="22sp" />
+                    >
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textthemesubtitle"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/appthemetext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="18dp"
+                        android:text="App Theme"
+                        android:textColor="@color/textColor"
+                        android:textSize="22sp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textthemesubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/appthemetext"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorGrey"
+                        android:layout_marginTop="2dp"
+                        android:text="Choose Your App Theme" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/changeThemeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/roundedbtn"
+                        android:gravity="center"
+                        android:text="Theme"
+                        android:textAllCaps="false"
+                        app:cornerRadius="10dp"
+                        android:layout_alignParentTop="true"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/colorTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/appthemetext"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorGrey"
-                    android:layout_marginTop="2dp"
-                    android:text="Choose Your App Theme" />
+                    >
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeThemeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/roundedbtn"
-                    android:gravity="center"
-                    android:text="Theme"
-                    android:textAllCaps="false"
-                    app:cornerRadius="10dp"
-                    android:layout_alignParentTop="true"
-                    />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/achievementsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="18dp"
+                        android:text="Achievements"
+                        android:textColor="@color/textColor"
+                        android:textSize="22sp" />
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_below="@id/achievementsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="15dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorGrey"
+                        android:layout_marginTop="2dp"
+                        android:text="Unlock New Achievements" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/exploreBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/roundedbtn"
+                        android:gravity="center"
+                        android:text="Explore"
+                        android:textAllCaps="false"
+                        app:cornerRadius="10dp"
+                        android:layout_alignParentTop="true"
+                        />
+
+                </RelativeLayout>
             </RelativeLayout>
-
-
 
 
 
@@ -196,4 +248,4 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

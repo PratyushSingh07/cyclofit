@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.example.cyclofit.R
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.firestore.FirestoreClass
@@ -38,16 +39,17 @@ class SettingsActivity :AppCompatActivity(){
 
         selectThemeBtn = findViewById(R.id.changeThemeButton)
         changeAppTheme()
-//        //getTheDarkMode
-//        sharedPreferences = getSharedPreferences("NightMode",0)
-//        nightMode = sharedPreferences.getBoolean("isNewUser",false)
-//        getDarkMode(nightMode)
 
         val btn = findViewById<Button>(R.id.logoutButton)
         btn.setOnClickListener{
             FirebaseAuth.getInstance().signOut()
             finish()
             startActivity(Intent(this,AuthenticationActivity::class.java))
+        }
+
+        val exploreBtn=findViewById<AppCompatButton>(R.id.exploreBtn)
+        exploreBtn.setOnClickListener {
+            startActivity(Intent(this,AchievementsActivity::class.java))
         }
     }
 
