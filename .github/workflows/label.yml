@@ -1,22 +1,39 @@
-# This workflow will triage pull requests and apply a label based on the
-# paths that are modified in the pull request.
-#
-# To use this workflow, you will need to set up a .github/labeler.yml
-# file with configuration.  For more information, see:
-# https://github.com/actions/labeler
+name: Add Tags to PRs for New Contributors
 
-name: Labeler
-on: [pull_request]
+on:
+  pull_request:
+    types:
+      - opened
 
 jobs:
-  label:
-
+  add_tags:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
 
     steps:
-    - uses: actions/labeler@v4
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Check if contributor is new
+        id: check_new_contributor
+        run: |
+          contributor_username=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)
+          labels=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contributors?anon=true")
+          if [[ $(echo $labels | jq --arg contributor "$contributor_username" \
+            '.[] | select(.login==$contributor)') == "" ]]; then
+            echo "New contributor detected."
+            echo "::set-output name=new_contributor::true"
+          else
+            echo "Existing contributor."
+            echo "::set-output name=new_contributor::false"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Add tags for new contributors
+        if: steps.check_new_contributor.outputs.new_contributor == 'true'
+        run: |
+          pr_number=$(jq -r '.pull_request.number' $GITHUB_EVENT_PATH)
+          tag_name="new-contributor"
+          curl -X POST -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -d "{\"labels\":[\"$tag_name\"]}" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/$pr_number/labels"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
