@@ -3,8 +3,6 @@ package com.example.cyclofit.ui.activities
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
@@ -20,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity :AppCompatActivity(){
 
-    private lateinit var selectThemeBtn:Button
+    private lateinit var selectThemeButton:Button
     private var nightMode:Boolean = false
     private lateinit var sharedPreferences:SharedPreferences
     private lateinit var editor:Editor
@@ -37,7 +35,7 @@ class SettingsActivity :AppCompatActivity(){
         dialogFragment = DialogFragment()
 
 
-        selectThemeBtn = findViewById(R.id.changeThemeButton)
+        selectThemeButton = findViewById(R.id.changeThemeButton)
         changeAppTheme()
 
         val btn = findViewById<Button>(R.id.logoutButton)
@@ -66,7 +64,7 @@ class SettingsActivity :AppCompatActivity(){
 
 
     private fun changeAppTheme(){
-        selectThemeBtn.setOnClickListener {
+        selectThemeButton.setOnClickListener {
             dialogFragment.show(supportFragmentManager,"customDialog")
 //            editor = sharedPreferences.edit()
 //            editor.putBoolean("isNewUser",false)

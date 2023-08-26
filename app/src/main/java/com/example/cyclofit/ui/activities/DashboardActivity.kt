@@ -56,10 +56,12 @@ class DashboardActivity:AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if(mCount==0)
+        if(mCount==0) {
             goHomeFragment()
-        else
-        super.onBackPressed()
+        }
+        else {
+            super.onBackPressed()
+        }
         mCount++
     }
     private fun setCurrentFragment(fragment: Fragment) =

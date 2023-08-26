@@ -1,21 +1,15 @@
 package com.example.cyclofit.ui.activities
 
 import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.WindowManager
 import android.widget.LinearLayout
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.cyclofit.R
 import com.google.firebase.auth.FirebaseAuth
@@ -36,10 +30,10 @@ class SplashScreen : AppCompatActivity() {
         //checkDarkMode
         checkDarkMode()
         val linear = findViewById<LinearLayout>(R.id.background_splash_screen)
-        val animationDrawable = linear.background as AnimationDrawable
-        animationDrawable.setEnterFadeDuration(2000)
-        animationDrawable.setExitFadeDuration(2000)
-        animationDrawable.start()
+        val animDrawable = linear.background as AnimationDrawable
+        animDrawable.setEnterFadeDuration(2000)
+        animDrawable.setExitFadeDuration(2000)
+        animDrawable.start()
 
         if(FirebaseAuth.getInstance().currentUser == null){
             Handler(Looper.getMainLooper()).postDelayed({
