@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.CommunityFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/backgroundColor"
-        >
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/bg_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_img"
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -21,62 +31,47 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarDashboard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_green"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-
-        </com.google.android.material.appbar.MaterialToolbar>
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <LinearLayout
-            android:id="@+id/llHealthImg"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:background="@drawable/background_img"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_community_name"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarDashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"/>
-        </LinearLayout>
+                android:background="@color/dark_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Community" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_community_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_community_member"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="32dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_community_name"
+            tools:listitem="@layout/user_community_member_list" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
             android:backgroundTint="@color/dark_green"
+            android:contentDescription="Add post to community"
             android:src="@drawable/ic_baseline_add_24"
-            app:tint = "@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="20dp"/>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_community_member"
-            android:layout_width="match_parent"
-            android:layout_height="0sp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llHealthImg"
-            tools:layout_editor_absoluteX="4dp"
-            tools:listitem="@layout/user_community_member_list" />
-
-
+            app:tint="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 </FrameLayout>
