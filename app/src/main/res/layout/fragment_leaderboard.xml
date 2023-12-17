@@ -118,7 +118,9 @@
                     android:layout_below="@+id/llUserName"
                     android:layout_marginLeft="10dp"
                     android:text="ashishgupta9936@gmail.com"
-                    android:textSize="17sp" />
+                    android:textSize="17sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
 
 
             </RelativeLayout>
