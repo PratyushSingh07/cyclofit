@@ -19,4 +19,6 @@
     <color name="textInputOutlineColor">#fff</color>
 
     <color name="semiTransparentColor">#90FFFFFF</color>
+    <!-- Card color for top user in leaderboard -->
+    <color name="topUserCardColor">#77C877</color>
 </resources>
