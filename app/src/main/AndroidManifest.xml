@@ -52,6 +52,7 @@
         <activity android:name=".ui.activities.DashboardActivity" />
         <activity
             android:name=".ui.activities.SplashScreen"
+            android:theme="@style/Theme.RemoveSplashScreenTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
