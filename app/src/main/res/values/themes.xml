@@ -33,4 +33,9 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+    <!-- Disable Android 12 default splash screen -->
+    <style name="Theme.RemoveSplashScreenTheme" parent="@style/Theme.CycloFit">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>
