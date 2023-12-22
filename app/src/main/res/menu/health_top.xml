@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/line_chart"
+        android:title="Line Chart" />
+    <item
+        android:id="@+id/pie_chart"
+        android:title="Pie Chart" />
+    <item
+        android:id="@+id/combine_chart"
+        android:title="Combine Chart" />
+</menu>

@@ -3,20 +3,23 @@ package com.example.cyclofit.ui.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.viewpager2.widget.ViewPager2
-import com.example.cyclofit.`interface`.HeartApi
+import androidx.core.view.MenuProvider
+import com.example.cyclofit.R
 import com.example.cyclofit.databinding.FragmentHealthBinding
+import com.example.cyclofit.`interface`.HeartApi
 import com.example.cyclofit.model.Shared
 import com.example.cyclofit.model.User
 import com.example.cyclofit.ui.activities.GraphActivity
-import com.example.cyclofit.ui.adapter.ViewAdapter
-import com.example.cyclofit.ui.fragment.HomeFragment.Companion.timer
+import com.example.cyclofit.ui.adapter.CombinedChartAdapter
+import com.example.cyclofit.ui.adapter.PieChartAdapter
+import com.example.cyclofit.ui.adapter.LineChartAdapter
 import com.example.cyclofit.ui.utils.Constants
-import com.github.mikephil.charting.data.Entry
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -47,21 +50,22 @@ import java.util.concurrent.TimeUnit
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHealthBinding.inflate(inflater, container, false)
+        binding.toolbarHealth.inflateMenu(R.menu.health_top)
         mFireStore = FirebaseFirestore.getInstance()
 
 
         val pager = binding.viewPager
         pager.isSaveEnabled = false
         val tl = binding.tabs
-        pager.adapter = ViewAdapter(childFragmentManager,lifecycle )
-
-        TabLayoutMediator(tl,pager){ tab,position->
+        pager.adapter = LineChartAdapter(childFragmentManager, lifecycle)
+        TabLayoutMediator(tl, pager) { tab, position ->
             tab.text = tabTitle[position]
         }.attach()
 
         binding.cvOfHeartRate.setOnClickListener{
             startActivity(Intent(context,GraphActivity::class.java))
         }
+        inflateMenuItem()
         return binding.root
     }
 //    private fun fetchCalsBurnt(){
@@ -136,28 +140,59 @@ import java.util.concurrent.TimeUnit
 
          val type: Type = object : TypeToken<ArrayList<Shared?>?>() {}.type
 
-         if(json!=null) {
-             sp = gson.fromJson(json, type)
-             mFireStore.collection(Constants.USERS)
-                 // the document id to get the field of User.
-                 .document(FirebaseAuth.getInstance().currentUser!!.uid)
-                 .get().addOnSuccessListener {
-                     val  userWeight = it.toObject(User::class.java)!!.weight
-                     var x: Float = 0F
-                     for (i in sp) {
-                         val y = i.time.toInt()
-                         val MET = 12 // for bicycles
-                         val wt = userWeight.toDouble() // in kg
-                         var totalCalsBurnt = 0.0;
-                         totalCalsBurnt = y * (MET * 3.5 * wt)
-                         totalCalsBurnt /= 200 * 1000;
-                         x += totalCalsBurnt.toFloat()
-                     }
-                     binding.valueOfKcalsBurnt.text = String.format("%.2f", x).toDouble().toString()
-                 }
+        if(json!=null) {
+            sp = gson.fromJson(json, type)
+            mFireStore.collection(Constants.USERS)
+                // the document id to get the field of User.
+                .document(FirebaseAuth.getInstance().currentUser!!.uid)
+                .get().addOnSuccessListener {
+                    val  userWeight = it.toObject(User::class.java)!!.weight
+                    var x: Float = 0F
+                    for (i in sp) {
+                        val y = i.time.toInt()
+                        val MET = 12 // for bicycles
+                        val wt = userWeight.toDouble() // in kg
+                        var totalCalsBurnt = 0.0;
+                        totalCalsBurnt = y * (MET * 3.5 * wt)
+                        totalCalsBurnt /= 200 * 1000;
+                        x += totalCalsBurnt.toFloat()
+                    }
+                    binding.valueOfKcalsBurnt.text = String.format("%.2f", x).toDouble().toString()
+                }
 
 
          }
      }
 
+    private fun inflateMenuItem() {
+        // use menu provider api to implement menu
+        binding.toolbarHealth.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Inflate the menu into the toolbar
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.line_chart -> {
+                        binding.viewPager.adapter = LineChartAdapter(childFragmentManager, lifecycle)
+                        true
+                    }
+
+                    R.id.pie_chart -> {
+                        binding.viewPager.adapter =
+                            PieChartAdapter(childFragmentManager, lifecycle)
+                        true
+                    }
+
+                    R.id.combine_chart -> {
+                        binding.viewPager.adapter =
+                            CombinedChartAdapter(childFragmentManager, lifecycle)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        })
+    }
 }
