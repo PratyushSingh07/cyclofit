@@ -8,16 +8,17 @@ import com.example.cyclofit.ui.fragment.DistanceFragment
 import com.example.cyclofit.ui.fragment.KcalFragment
 import com.example.cyclofit.ui.fragment.TimeFragment
 
-class ViewAdapter(fragmentManager: FragmentManager,lifecycle : Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle) {
+open class LineChartAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         return 3
     }
 
     override fun createFragment(position: Int): Fragment {
-        when(position){
-            0 -> return KcalFragment()
-            1 -> return TimeFragment()
-            else -> return DistanceFragment()
+        return when (position) {
+            0 -> KcalFragment()
+            1 -> TimeFragment()
+            else -> DistanceFragment()
         }
     }
 }

@@ -28,6 +28,8 @@ object Constants{
     const val PUT_EXTRA = "put"
     const val PROFILE_COMPLETED = "profile"
 
+    const val met = 12 // for bicycles
+
 
     fun showImageChooser(activity : Activity)
     {
