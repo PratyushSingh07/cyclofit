@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.LeaderboardFragment">
 
-    <RelativeLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
-        >
+        android:background="@color/backgroundColor">
 
-        <LinearLayout
-            android:id="@+id/llLeaderboard"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/background_img">
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appBarLayout"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:outlineAmbientShadowColor="@color/dark_green"
+            android:outlineSpotShadowColor="@color/dark_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarDashboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:outlineAmbientShadowColor="@color/dark_green"
-                android:outlineSpotShadowColor="@color/dark_green"
+                android:background="@color/dark_green"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbarDashboard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/dark_green"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:title="Leaderboard" />
+        </com.google.android.material.appbar.AppBarLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                </com.google.android.material.appbar.MaterialToolbar>
-            </com.google.android.material.appbar.AppBarLayout>
+            <ImageView
+                android:id="@+id/bg_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_img_small"
+                android:importantForAccessibility="no" />
+
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchBox"
-                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_search_24"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/backgroundColor"
-                app:queryHint="Search The LeaderBoard..."
                 android:background="@drawable/background_line"
-                app:iconifiedByDefault="false"
+                android:backgroundTint="@color/backgroundColor"
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:textColor="@color/black"
                 android:textSize="10sp"
-                />
-        </LinearLayout>
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/medal"
-            android:layout_below="@id/llLeaderboard"
-            android:layout_marginTop="28dp"
-            android:layout_marginStart="15dp"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/rankOfUser"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="16dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="16sp"
-            android:backgroundTint="@color/topUserCardColor"
-            android:outlineSpotShadowColor="@color/topUserCardColor"
-            android:layout_width="300dp"
-            android:layout_height="85dp"
-            android:layout_below="@+id/llLeaderboard"
-            android:layout_marginStart="90dp">
+                app:iconifiedByDefault="false"
+                app:queryHint="Search The LeaderBoard..." />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/bg_image"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/medal" />
 
-                <LinearLayout
-                    android:id="@+id/llUserName"
-                    android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/rankOfUser"
+                android:layout_width="300dp"
+                android:layout_height="85dp"
+                android:layout_below="@+id/bg_image"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16sp"
+                android:backgroundTint="@color/topUserCardColor"
+                android:outlineSpotShadowColor="@color/topUserCardColor"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentStart="true"
-                    >
+                    android:layout_margin="10dp">
 
-
-                    <TextView
-                        android:id="@+id/nameOfUser"
+                    <LinearLayout
+                        android:id="@+id/llUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Aditya Gupta"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/nameOfUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aditya Gupta"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/distanceCovered"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="0.0km "
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
                     <TextView
-                        android:id="@+id/distanceCovered"
-                        android:layout_width="0dp"
+                        android:id="@+id/emailOfUser"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:text="0.0km "
-                        android:textSize="20sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/emailOfUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/llUserName"
-                    android:layout_marginLeft="10dp"
-                    android:text="ashishgupta9936@gmail.com"
-                    android:textSize="17sp"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                        android:layout_below="@+id/llUserName"
+                        android:layout_marginStart="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="ashishgupta9936@gmail.com"
+                        android:textSize="17sp" />
 
 
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-        <LinearLayout
-            android:layout_below="@id/rankOfUser"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16sp"
-            android:background="@color/backgroundColor"
-            >
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvLeaderboard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
-
-    </RelativeLayout>
-
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rankOfUser"
+                android:clipToPadding="false"
+                android:paddingTop="16dp"
+                tools:listitem="@layout/item_leaderboard" />
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>
