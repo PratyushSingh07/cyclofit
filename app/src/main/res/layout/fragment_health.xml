@@ -5,301 +5,302 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/llHealth"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/background_img"
-        android:gravity="center"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Track Your Performance"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    </LinearLayout>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:outlineAmbientShadowColor="@color/dark_green"
-        android:outlineSpotShadowColor="@color/dark_green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarHealth"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/dark_green"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Health" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:fitsSystemWindows="true"
+            android:outlineAmbientShadowColor="@color/dark_green"
+            android:outlineSpotShadowColor="@color/dark_green">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:clipToPadding="false"
-        android:paddingTop="200dp"
-        tools:context=".ui.fragment.HealthFragment">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp" />
-
-            <!--        <LinearLayout-->
-            <!--            android:id="@+id/llTabs"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:layout_below="@+id/vpChart"-->
-            <!--            android:gravity="center"-->
-            <!--            >-->
-            <!--            <com.google.android.material.button.MaterialButton-->
-            <!--                android:id="@+id/kcal"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Kcal"-->
-            <!--                android:backgroundTint="#40E0D0"-->
-            <!--                android:layout_marginRight="20dp"-->
-            <!--                android:layout_marginLeft="20dp"-->
-            <!--                app:cornerRadius="10dp"/>-->
-            <!--            <com.google.android.material.button.MaterialButton-->
-            <!--                android:id="@+id/time"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Time"-->
-            <!--                android:layout_marginRight="20dp"-->
-            <!--                android:layout_marginLeft="20dp"-->
-            <!--                android:backgroundTint="#40E0D0"-->
-            <!--                app:cornerRadius="10dp"/>-->
-            <!--            <com.google.android.material.button.MaterialButton-->
-            <!--                android:id="@+id/distance"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Distance"-->
-            <!--                android:backgroundTint="#40E0D0"-->
-            <!--                android:layout_marginRight="20dp"-->
-            <!--                android:layout_marginLeft="20dp"-->
-            <!--                app:cornerRadius="10dp"/>-->
-
-            <!--        </LinearLayout>-->
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarHealth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/viewPager"
-                android:background="@color/backgroundColor"
-                app:tabIndicatorColor="@color/dark_green"
-                app:tabSelectedTextColor="@color/dark_green"
-                app:tabTextColor="@color/textColor">
+                android:background="@color/dark_green"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:title="Health" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kcal" />
+        <FrameLayout
+            android:id="@+id/llHealth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_img_small"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Time" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Track Your Performance"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </FrameLayout>
 
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Distance" />
-            </com.google.android.material.tabs.TabLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="160dp"
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context=".ui.fragment.HealthFragment">
 
             <RelativeLayout
-                android:id="@+id/cardViewRL"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tabs"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:background="@color/backgroundColor"
-                android:gravity="center">
+                android:layout_height="wrap_content">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/heartRate"
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:backgroundTint="@color/dark_green"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp"
+                    android:layout_marginBottom="10dp" />
 
-                    >
+                <!--        <LinearLayout-->
+                <!--            android:id="@+id/llTabs"-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:orientation="horizontal"-->
+                <!--            android:layout_below="@+id/vpChart"-->
+                <!--            android:gravity="center"-->
+                <!--            >-->
+                <!--            <com.google.android.material.button.MaterialButton-->
+                <!--                android:id="@+id/kcal"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="Kcal"-->
+                <!--                android:backgroundTint="#40E0D0"-->
+                <!--                android:layout_marginRight="20dp"-->
+                <!--                android:layout_marginLeft="20dp"-->
+                <!--                app:cornerRadius="10dp"/>-->
+                <!--            <com.google.android.material.button.MaterialButton-->
+                <!--                android:id="@+id/time"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="Time"-->
+                <!--                android:layout_marginRight="20dp"-->
+                <!--                android:layout_marginLeft="20dp"-->
+                <!--                android:backgroundTint="#40E0D0"-->
+                <!--                app:cornerRadius="10dp"/>-->
+                <!--            <com.google.android.material.button.MaterialButton-->
+                <!--                android:id="@+id/distance"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="Distance"-->
+                <!--                android:backgroundTint="#40E0D0"-->
+                <!--                android:layout_marginRight="20dp"-->
+                <!--                android:layout_marginLeft="20dp"-->
+                <!--                app:cornerRadius="10dp"/>-->
 
-                    <LinearLayout
-                        android:id="@+id/cvOfHeartRate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                <!--        </LinearLayout>-->
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/viewPager"
+                    android:background="@color/backgroundColor"
+                    app:tabIndicatorColor="@color/dark_green"
+                    app:tabSelectedTextColor="@color/dark_green"
+                    app:tabTextColor="@color/textColor">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kcal" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Distance" />
+                </com.google.android.material.tabs.TabLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cardViewRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tabs"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/backgroundColor"
+                    android:gravity="center">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/heartRate"
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:backgroundTint="@color/dark_green"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="15dp"
 
                         >
 
-                        <TextView
-                            android:id="@+id/valueOfHeartRate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:text="0 bpm"
-                            android:textSize="35sp" />
+                        <LinearLayout
+                            android:id="@+id/cvOfHeartRate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:hint="Heart Rate"
-                            android:textSize="18sp" />
+                            >
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/valueOfHeartRate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="0 bpm"
+                                android:textSize="35sp" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cyclingSpeed"
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:hint="Heart Rate"
+                                android:textSize="18sp" />
 
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_toEndOf="@id/heartRate"
-                    android:backgroundTint="@color/dark_green"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp"
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cyclingSpeed"
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/heartRate"
+                        android:backgroundTint="@color/dark_green"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="15dp"
 
-                        <TextView
-                            android:id="@+id/valueOfCyclingSpeed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:fontFamily="@font/lato"
-                            android:text="0 kmph"
-                            android:textSize="35sp" />
+                        >
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            android:hint="Cycling Speed"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/valueOfCyclingSpeed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:fontFamily="@font/lato"
+                                android:text="0 kmph"
+                                android:textSize="35sp" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/kcalsBurnt"
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
-                    android:layout_below="@id/heartRate"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:backgroundTint="@color/dark_green"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:hint="Cycling Speed"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/kcalsBurnt"
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_below="@id/heartRate"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/dark_green"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="15dp">
 
-                        <TextView
-                            android:id="@+id/valueOfKcalsBurnt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:text="0 Kcal"
-                            android:textSize="35sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:hint="Kcals Burnt"
-                            android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/valueOfKcalsBurnt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="0 Kcal"
+                                android:textSize="35sp" />
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:hint="Kcals Burnt"
+                                android:textSize="18sp" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/distanceCovered"
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    android:layout_below="@id/cyclingSpeed"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_toRightOf="@id/kcalsBurnt"
-                    android:backgroundTint="@color/dark_green"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="15dp">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/distanceCovered"
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_below="@id/cyclingSpeed"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toRightOf="@id/kcalsBurnt"
+                        android:backgroundTint="@color/dark_green"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="15dp">
 
-                        <TextView
-                            android:id="@+id/valueOfDistanceCovered"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:text="0 Km"
-                            android:textSize="35sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:hint="Distance Covered"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/valueOfDistanceCovered"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="0 Km"
+                                android:textSize="35sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:hint="Distance Covered"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
             </RelativeLayout>
-        </RelativeLayout>
-    </ScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>
 
