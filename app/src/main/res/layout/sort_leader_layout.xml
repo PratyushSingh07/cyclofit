@@ -2,67 +2,69 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/backgroundColor"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingHorizontal="10dp"
-    android:gravity="center_horizontal">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <CheckBox
-            android:id="@+id/id_tv_sort_by_name"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:text="@string/by_name"
-            android:textAllCaps="false"
-            android:checked="true"
-            android:textStyle="bold" />
-
-        <CheckBox
-            android:id="@+id/id_tv_sort_by_distance"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/by_distance"
-            android:textAllCaps="false"
-            android:checked="false"
-            android:textStyle="bold" />
-    </LinearLayout>
-
+    android:padding="16dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/id_tv_sort_ascending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:checked="true"
-            android:text="from A to Z" />
-
-        <CheckBox
-            android:id="@+id/id_tv_sort_descending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:text="from Z to A" />
-    </LinearLayout>
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:layout_marginBottom="20dp"
-        android:text="Sort"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/id_tv_sort_by_name"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/checkbox_bg"
+            android:button="@null"
+            android:checked="true"
+            android:padding="8dp"
+            android:textSize="15sp"
+            android:text="@string/sort_by_name"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/id_tv_sort_by_distance"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="15sp"
+            android:background="@drawable/checkbox_bg"
+            android:button="@null"
+            android:checked="false"
+            android:padding="8dp"
+            android:text="@string/sort_by_distance"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <RadioButton
+        android:id="@+id/id_tv_sort_ascending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:text="From A to Z" />
+
+    <RadioButton
+        android:id="@+id/id_tv_sort_descending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="From Z to A" />
+
+    <Button
         android:id="@+id/id_btn_sort_list"
-        android:textColor="@color/black"
-        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:layout_gravity="end"
+        android:text="Sort"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
         android:textSize="25sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold" />
 </androidx.appcompat.widget.LinearLayoutCompat>
