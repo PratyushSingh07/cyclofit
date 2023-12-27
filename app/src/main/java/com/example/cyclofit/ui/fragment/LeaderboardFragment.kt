@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.RadioButton
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.view.MenuProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -152,13 +153,13 @@ class LeaderboardFragment : BaseFragment() {
                         ) { view, alertDialog ->
                             var boolean = true
 
-                            val sortName = view.findViewById<CheckBox>(R.id.id_tv_sort_by_name)
+                            val sortName = view.findViewById<RadioButton>(R.id.id_tv_sort_by_name)
                             val sortDistance =
-                                view.findViewById<CheckBox>(R.id.id_tv_sort_by_distance)
+                                view.findViewById<RadioButton>(R.id.id_tv_sort_by_distance)
                             val checkAscending =
-                                view.findViewById<CheckBox>(R.id.id_tv_sort_ascending)
+                                view.findViewById<RadioButton>(R.id.id_tv_sort_ascending)
                             val checkDescending =
-                                view.findViewById<CheckBox>(R.id.id_tv_sort_descending)
+                                view.findViewById<RadioButton>(R.id.id_tv_sort_descending)
                             val btnSortList =
                                 view.findViewById<Button>(R.id.id_btn_sort_list)
 
@@ -166,16 +167,16 @@ class LeaderboardFragment : BaseFragment() {
                             sortName.setOnClickListener {
                                 if (sortName.isChecked) {
                                     sortDistance.isChecked = false
-                                    checkAscending.text = "from A to Z"
-                                    checkDescending.text = "from Z to A"
+                                    checkAscending.text = "From A to Z"
+                                    checkDescending.text = "From Z to A"
                                 }
                             }
                             // check sorting method descending
                             sortDistance.setOnClickListener {
                                 if (sortDistance.isChecked) {
                                     sortName.isChecked = false
-                                    checkAscending.text = "from highest"
-                                    checkDescending.text = "from lowest"
+                                    checkAscending.text = "From highest"
+                                    checkDescending.text = "From lowest"
                                 }
                             }
 
