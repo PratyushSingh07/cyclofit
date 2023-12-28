@@ -58,14 +58,14 @@ Our app has many essential features to track and analyse the performance of a cy
 <p><h2><a id="index7"></a>🖼 App Screenshots</h2></p>
 <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/90026952/205489866-a1c1f910-262c-4b3a-bed5-df510a56c3ae.jpg" width=250 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/90026952/205489863-4a65f6a3-b127-429d-8557-085b7ec527c2.jpg" width=250 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/90026952/205490218-4ff64999-57a9-4189-a922-d8eced6045bd.jpeg" width=250 height=480></td>
+    <td><img src="https://github.com/PratyushSingh07/cyclofit/assets/40030547/1f30e8a1-21e3-40c8-8565-a8799fe7299b" width=250 height=510></td>
+    <td><img src="https://github.com/PratyushSingh07/cyclofit/assets/40030547/fcad0995-084c-46fd-959e-9a93cff0ec2e" width=250 height=510></td>
+    <td><img src="https://github.com/PratyushSingh07/cyclofit/assets/40030547/a4bc2b4c-3b75-4ce1-a0c4-29f57ad1b10a" width=250 height=510></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/90026952/205490042-5f6ad1b3-6e4c-40e6-b4d9-d833dab08a7f.jpg" width=250 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/90026952/205489861-c59e861f-133b-4da8-b17a-23819b4d3845.jpg" width=250 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/90026952/205490219-4efb4f6b-b8f2-4430-9824-df7581b0b113.jpeg" width=250 height=480></td>
+    <td><img src="https://github.com/PratyushSingh07/cyclofit/assets/40030547/5798fbfc-8848-450e-99dc-5910dd2c824e" width=250 height=510></td>
+    <td><img src="https://github.com/PratyushSingh07/cyclofit/assets/40030547/faa7bafc-6aab-4275-bf60-f7fe4384c619" width=250 height=510></td>
+    <td><img src="https://github.com/PratyushSingh07/cyclofit/assets/40030547/fd89221e-6c0e-4682-ab3c-c0679e289a48" width=250 height=510></td>
   </tr>
   </table>
 
